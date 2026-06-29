@@ -1,258 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gayathri J. Pisharady | Portfolio</title>
+<title>Gayathri J. Pisharady</title>
 
-<style>
-.line{
-    width:80px;
-    height:2px;
-    background:var(--text);
-    margin:20px 0;
-}
-</style>
+<meta name="description" content="Mechanical Engineer | Designer | Builder">
+
+<link rel="icon" href="favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
-<style>
-:root{
-  --bg:#ffffff;
-  --text:#111111;
-  --muted:#666666;
-  --border:#e5e5e5;
-}
-body.dark{
-  --bg:#0a0a0a;
-  --text:#ffffff;
-  --muted:#8c8c8c;
-  --border:#1f1f1f;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-font-family:Arial,sans-serif;
-background:var(--bg);
-color:var(--text);
-transition:.3s;
-}
-nav{
-position:fixed;
-top:0;
-width:100%;
-background:var(--bg);
-border-bottom:1px solid var(--border);
-padding:20px 8%;
-display:flex;
-justify-content:space-between;
-z-index:1000;
-}
-nav a{
-color:var(--text);
-text-decoration:none;
-margin-right:24px;
-font-size:.9rem;
-}
-.toggle{
-cursor:pointer;
-border:1px solid var(--border);
-padding:8px 12px;
-background:none;
-color:var(--text);
-}
-section{
-padding:100px 8%;
-max-width:1100px;
-margin:auto;
-}
-.hero{
-min-height:100vh;
-display:grid;
-grid-template-columns:1.2fr .8fr;
-gap:50px;
-align-items:center;
-}
-.hero h1{
-font-size:4rem;
-line-height:1;
-margin-bottom:20px;
-}
-.hero p{
-color:var(--muted);
-margin-bottom:25px;
-}
-.photo{
-width:100%;
-height:500px;
-border:1px solid var(--border);
-object-fit:cover;
-filter:grayscale(100%);
-}
-.btn{
-display:inline-block;
-padding:12px 18px;
-border:1px solid var(--text);
-color:var(--text);
-text-decoration:none;
-margin-right:10px;
-margin-top:10px;
-}
-h2{
-font-size:2rem;
-margin-bottom:30px;
-}
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-.card{
-border:1px solid var(--border);
-padding:20px;
-}
-.small{
-color:var(--muted);
-margin-top:8px;
-}
-.exp{
-display:grid;
-gap:18px;
-}
-footer{
-padding:50px 8%;
-border-top:1px solid var(--border);
-margin-top:50px;
-}
-@media(max-width:800px){
-.hero{grid-template-columns:1fr}
-.hero h1{font-size:3rem}
-}
-</style>
-</head>
+
 <body>
 
-<nav>
-<div>
-<a href="#home">HOME</a>
-<a href="#about">ABOUT</a>
-<a href="#projects">PROJECTS</a>
-<a href="#experience">EXPERIENCE</a>
-<a href="#contact">CONTACT</a>
+<div id="progress-bar"></div>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+GJP
+
 </div>
-<button class="toggle" onclick="document.body.classList.toggle('dark')">☾</button>
+
+<ul class="nav-links">
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#current">Current</a></li>
+
+<li><a href="#work">Work</a></li>
+
+<li><a href="#experience">Experience</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<button id="theme-toggle">
+
+☾
+
+</button>
+
 </nav>
 
-<section class="hero" id="home">
-<div>
-<h1>Gayathri J.<br>Pisharady</h1>
-<p>Mechanical Engineering Student • Designer • Builder</p>
+</header>
 
-<a class="btn" href="resume.pdf">Resume</a>
-<a class="btn" href="https://github.com/GayathriJPisharady">GitHub</a>
-<a class="btn" href="https://www.linkedin.com/in/gayathrijpisharady">LinkedIn</a>
+<main>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<p class="small-title">
+
+Mechanical Engineer
+
+</p>
+
+<h1>
+
+Gayathri
+
+<span>J.</span>
+
+Pisharady
+
+</h1>
+
+<h2 id="changing-text">
+
+Designer
+
+</h2>
+
+<p class="hero-description">
+
+Designing products.
+
+Building systems.
+
+Leading communities.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="resume.pdf" class="primary-btn">
+
+Resume
+
+</a>
+
+<a href="https://github.com/YOURUSERNAME" target="_blank">
+
+GitHub
+
+</a>
+
+<a href="https://www.linkedin.com/in/YOURPROFILE" target="_blank">
+
+LinkedIn
+
+</a>
+
 </div>
 
-<div>
-<img src="profile.jpeg" alt="Profile" class="photo">
 </div>
+
+<div class="hero-glow"></div>
+
+<div class="scroll-indicator">
+
+↓
+
+Explore
+
+</div>
+
 </section>
 
 <section id="about">
-<h2>ABOUT</h2>
+
+<div class="section-title">
+
+01
+
+About
+
+</div>
+
+<div class="section-content">
+
+<h3>
+
+Engineering is where creativity meets precision.
+
+</h3>
+
 <p>
-B.Tech Mechanical Engineering student at Government Engineering College Palakkad.
-Interested in CAD, product design, robotics, automation and engineering innovation.
+
+I'm Gayathri J. Pisharady, a Mechanical Engineering student at Government Engineering College Palakkad with interests in CAD, robotics, product design, automation and engineering leadership.
+
 </p>
+
+</div>
+
 </section>
 
-<section id="projects">
-<h2>PROJECTS</h2>
+<section id="current">
 
-<div class="grid">
-<div class="card">
-<h3>Formula Kart Design Challenge</h3>
-<p class="small">Forza 1.5</p>
-<p class="small">Kart chassis design and CAD development.</p>
+<div class="section-title">
+
+02
+
+Current
+
 </div>
 
-<div class="card">
-<h3>MIG Welding Torch Simulator</h3>
-<p class="small">Arduino + Processing</p>
-<p class="small">2-axis welding simulator with motion control.</p>
+<div class="current-grid">
+
+<div class="current-card">
+
+<h4>Building</h4>
+
+<p>Formula Kart Design Challenge</p>
+
 </div>
+
+<div class="current-card">
+
+<h4>Working</h4>
+
+<p>Operations Intern @ Techfunic</p>
+
 </div>
+
+<div class="current-card">
+
+<h4>Training</h4>
+
+<p>Industrial Training @ CIPET</p>
+
+</div>
+
+<div class="current-card">
+
+<h4>Leading</h4>
+
+<p>IEEE IAS SBC GEC Palakkad</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="work">
+
+<div class="section-title">
+
+03
+
+Selected Work
+
+</div>
+
+<div class="project">
+
+<div class="project-number">
+
+01
+
+</div>
+
+<div class="project-content">
+
+<h3>
+
+Formula Kart Design Challenge
+
+</h3>
+
+<p>
+
+Lightweight chassis design, CAD modelling and engineering development as part of Team Forza 1.5.
+
+</p>
+
+<a href="#">
+
+View Case Study →</a>
+
+</div>
+
+</div>
+
+<div class="project">
+
+<div class="project-number">
+
+02
+
+</div>
+
+<div class="project-content">
+
+<h3>
+
+MIG Welding Torch Simulator
+
+</h3>
+
+<p>
+
+Arduino based 2-axis welding simulator with Processing interface.
+
+</p>
+
+<a href="#">
+
+View Project →</a>
+
+</div>
+
+</div>
+
 </section>
 
 <section id="experience">
-<h2>EXPERIENCE</h2>
 
-<div class="exp">
+<div class="section-title">
 
-<div>
-<strong>Operations Intern</strong><br>
-<span class="small">Techfunic</span>
-</div>
+04
 
-<div>
-<strong>IEEE IAS Chair</strong><br>
-<span class="small">2026</span>
-</div>
-
-<div>
-<strong>IEDC Co-Lead</strong><br>
-<span class="small">2026–27</span>
-</div>
-  
-<div>
-<strong>IEEE IAS Vice Chair</strong><br>
-<span class="small">2025–26</span>
-</div>
-
-<div>
-<strong>Robotics Club Executive Committee</strong><br>
-<span class="small">2025–26</span>
-</div>
-
-<div>
-<strong>SAE Publicity Chair</strong><br>
-<span class="small">2025–26</span>
-</div>
-
-<div>
-<strong>Design Lead, Mechanical Engineering Association</strong><br>
-<span class="small">2026–27</span>
-</div>
+Experience
 
 </div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<span>2026</span>
+
+<h3>IEEE IAS Chair</h3>
+
+</div>
+
+<div class="timeline-item">
+
+<span>2026</span>
+
+<h3>IEDC Co-Lead</h3>
+
+</div>
+
+<div class="timeline-item">
+
+<span>2026</span>
+
+<h3>Design Lead — Mechanical Engineering Association</h3>
+
+</div>
+
+<div class="timeline-item">
+
+<span>2025</span>
+
+<h3>IEEE IAS Vice Chair</h3>
+
+</div>
+
+<div class="timeline-item">
+
+<span>2025</span>
+
+<h3>SAE Publicity Chair</h3>
+
+</div>
+
+<div class="timeline-item">
+
+<span>2025</span>
+
+<h3>Robotics Club Executive Committee</h3>
+
+</div>
+
+<div class="timeline-item">
+
+<span>2025</span>
+
+<h3>Operations Intern — Techfunic</h3>
+
+</div>
+
+<div class="timeline-item">
+
+<span>2025</span>
+
+<h3>Industrial Training Intern — CIPET</h3>
+
+</div>
+
+</div>
+
 </section>
 
 <section id="contact">
-    <h2>CONTACT</h2>
 
-    <p>
-        <a href="mailto:gayathrijpisharady@gmail.com">
-            Email
-        </a>
-    </p>
+<div class="section-title">
 
-    <p>
-        <a href="https://www.linkedin.com/in/gayathrijpisharady"
-           target="_blank">
-            LinkedIn
-        </a>
-    </p>
+05
 
-    <p>
-        <a href="https://github.com/GayathriJPisharady"
-           target="_blank">
-            GitHub
-        </a>
-    </p>
+Contact
+
+</div>
+
+<h2>
+
+Let's build something together.
+
+</h2>
+
+<div class="contact-links">
+
+<a href="mailto:yourmail@gmail.com">
+
+Email
+
+</a>
+
+<a href="https://github.com/YOURUSERNAME" target="_blank">
+
+GitHub
+
+</a>
+
+<a href="https://linkedin.com/in/YOURPROFILE" target="_blank">
+
+LinkedIn
+
+</a>
+
+</div>
+
 </section>
 
+</main>
+
 <footer>
-© 2026 Gayathri J. Pisharady
+
+<p>
+
+Designed & Developed by
+
+<strong>
+
+Gayathri J. Pisharady
+
+</strong>
+
+</p>
+
 </footer>
 
+<script src="script.js"></script>
+
 </body>
+
 </html>
