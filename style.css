@@ -1,33 +1,39 @@
 :root {
+
     --bg: #f5f5f2;
     --surface: #ffffff;
     --surface-soft: #ecece8;
+
     --text: #111111;
     --text-soft: #5d5d58;
     --text-faint: #888881;
+
     --border: #d8d8d1;
 
     --accent: #6654df;
-    --accent-soft: rgba(102,84,223,.11);
+    --accent-soft: rgba(102,84,223,.12);
 
     --max-width: 1380px;
     --nav-height: 78px;
 
-    --ease: cubic-bezier(.22,.61,.36,1);
 }
 
 
 body.dark {
+
     --bg: #0b0b0b;
     --surface: #151515;
     --surface-soft: #1c1c1c;
+
     --text: #f2f2ee;
     --text-soft: #a7a7a0;
     --text-faint: #72726c;
+
     --border: #2b2b27;
 
     --accent: #a090ff;
     --accent-soft: rgba(160,144,255,.13);
+
 }
 
 
@@ -45,6 +51,7 @@ html {
 
 
 body {
+
     background: var(--bg);
     color: var(--text);
 
@@ -57,6 +64,7 @@ body {
     transition:
         background .35s ease,
         color .35s ease;
+
 }
 
 
@@ -82,12 +90,14 @@ button {
 }
 
 
-/* =========================================
+/* =========================
    PROGRESS
-========================================= */
+========================= */
 
 #progress-bar {
+
     position: fixed;
+
     top: 0;
     left: 0;
 
@@ -97,24 +107,27 @@ button {
     background: var(--accent);
 
     z-index: 9999;
+
 }
 
 
-/* =========================================
+/* =========================
    SPOTLIGHT
-========================================= */
+========================= */
 
 #spotlight {
+
     position: fixed;
 
-    width: 380px;
-    height: 380px;
+    width: 420px;
+    height: 420px;
 
     border-radius: 50%;
 
     pointer-events: none;
 
-    transform: translate(-50%,-50%);
+    transform:
+        translate(-50%, -50%);
 
     background:
         radial-gradient(
@@ -123,17 +136,19 @@ button {
             transparent 68%
         );
 
-    opacity: .75;
+    opacity: .65;
 
     z-index: 0;
+
 }
 
 
-/* =========================================
-   CURSOR LABEL
-========================================= */
+/* =========================
+   CURSOR
+========================= */
 
 #cursor-label {
+
     position: fixed;
 
     width: 70px;
@@ -156,36 +171,43 @@ button {
     opacity: 0;
 
     transform:
-        translate(-50%,-50%)
+        translate(-50%, -50%)
         scale(.5);
 
     transition:
-        opacity .2s ease,
-        transform .3s var(--ease);
+        opacity .2s,
+        transform .3s;
+
 }
 
 
 #cursor-label.visible {
+
     opacity: 1;
 
     transform:
-        translate(-50%,-50%)
+        translate(-50%, -50%)
         scale(1);
+
 }
 
 
 #cursor-label span {
-    font: 10px "DM Mono", monospace;
+
+    font:
+        10px "DM Mono", monospace;
 
     letter-spacing: 1px;
+
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* =========================
+   NAV
+========================= */
 
 #site-header {
+
     position: fixed;
 
     top: 0;
@@ -197,12 +219,14 @@ button {
     z-index: 5000;
 
     transition:
-        background .3s ease,
-        border .3s ease;
+        background .3s,
+        border .3s;
+
 }
 
 
 #site-header.scrolled {
+
     background:
         color-mix(
             in srgb,
@@ -214,10 +238,12 @@ button {
 
     border-bottom:
         1px solid var(--border);
+
 }
 
 
 nav {
+
     width:
         min(
             var(--max-width),
@@ -233,16 +259,18 @@ nav {
     align-items: center;
 
     justify-content: space-between;
+
 }
 
 
 .logo {
+
     font:
-        700 21px
-        "Space Grotesk",
+        700 21px "Space Grotesk",
         sans-serif;
 
     letter-spacing: -.6px;
+
 }
 
 
@@ -252,29 +280,31 @@ nav {
 
 
 .nav-links {
+
     display: flex;
 
-    gap: 30px;
+    gap: 25px;
+
 }
 
 
 .nav-links a {
+
     position: relative;
 
     color: var(--text-soft);
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
 
     text-transform: uppercase;
 
-    letter-spacing: .5px;
 }
 
 
 .nav-links a::after {
+
     content: "";
 
     position: absolute;
@@ -287,28 +317,33 @@ nav {
 
     background: var(--accent);
 
-    transition:
-        width .3s var(--ease);
+    transition: width .3s;
+
 }
 
 
 .nav-links a:hover,
 .nav-links a.active {
+
     color: var(--text);
+
 }
 
 
 .nav-links a:hover::after,
 .nav-links a.active::after {
+
     width: 100%;
+
 }
 
 
-/* =========================================
+/* =========================
    THEME
-========================================= */
+========================= */
 
 #theme-toggle {
+
     width: 40px;
     height: 40px;
 
@@ -324,17 +359,20 @@ nav {
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     transition:
-        transform .35s var(--ease),
+        transform .3s,
         color .25s,
         border-color .25s;
+
 }
 
 
 #theme-toggle:hover {
+
     color: var(--accent);
 
     border-color:
@@ -343,14 +381,16 @@ nav {
     transform:
         rotate(20deg)
         scale(1.08);
+
 }
 
 
-/* =========================================
+/* =========================
    HERO
-========================================= */
+========================= */
 
 .hero {
+
     width:
         min(
             var(--max-width),
@@ -365,10 +405,9 @@ nav {
 
     align-items: center;
 
-    position: relative;
-
     padding:
         120px 0 90px;
+
 }
 
 
@@ -378,98 +417,109 @@ nav {
 
 
 .eyebrow {
+
     margin-bottom: 38px;
 
     color: var(--text-soft);
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
 
     letter-spacing: 2px;
+
 }
 
 
 .hero-title {
+
     font:
         700
-        clamp(68px,13vw,185px)
+        clamp(68px, 13vw, 185px)
         "Space Grotesk",
         sans-serif;
 
     line-height: .83;
 
     letter-spacing: -7px;
+
 }
 
 
 .hero-title span {
+
     display: block;
 
     margin-left: 10vw;
+
 }
 
 
 .hero-bottom {
+
     max-width: 1050px;
 
     margin-top: 75px;
 
     display: grid;
 
-    grid-template-columns:
-        1fr
-        auto;
+    grid-template-columns: 1fr auto;
 
     gap: 70px;
 
     align-items: end;
+
 }
 
 
 .hero-role {
+
     color: var(--accent);
 
     font:
-        14px
-        "DM Mono",
+        14px "DM Mono",
         monospace;
 
     margin-bottom: 14px;
+
 }
 
 
 #changing-role {
+
     display: inline-block;
 
     transition:
-        opacity .3s ease,
-        transform .3s ease;
+        opacity .3s,
+        transform .3s;
+
 }
 
 
 .hero-description {
-    max-width: 500px;
+
+    max-width: 520px;
 
     color: var(--text-soft);
 
     font-size: 17px;
 
-    line-height: 1.7;
 }
 
 
 .hero-links {
+
     display: flex;
 
     flex-direction: column;
 
     gap: 12px;
+
 }
 
 
 .magnetic-link {
+
     display: flex;
 
     align-items: center;
@@ -477,42 +527,31 @@ nav {
     gap: 15px;
 
     font:
-        11px
-        "DM Mono",
+        11px "DM Mono",
         monospace;
 
     text-transform: uppercase;
 
     transition:
-        color .25s ease,
-        transform .2s ease;
-}
+        color .25s,
+        transform .2s;
 
-
-.magnetic-link b {
-    font-weight: 400;
-
-    transition:
-        transform .3s var(--ease);
 }
 
 
 .magnetic-link:hover {
+
     color: var(--accent);
+
 }
 
 
-.magnetic-link:hover b {
-    transform:
-        translate(4px,-4px);
-}
-
-
-/* =========================================
+/* =========================
    SECTIONS
-========================================= */
+========================= */
 
 .content-section {
+
     width:
         min(
             var(--max-width),
@@ -523,10 +562,12 @@ nav {
 
     padding:
         150px 0;
+
 }
 
 
 .section-intro {
+
     display: grid;
 
     grid-template-columns: 80px 1fr;
@@ -534,65 +575,69 @@ nav {
     gap: 30px;
 
     margin-bottom: 65px;
+
 }
 
 
 .section-number {
+
     color: var(--accent);
 
     font:
-        11px
-        "DM Mono",
+        11px "DM Mono",
         monospace;
+
 }
 
 
 .section-kicker {
+
     color: var(--text-faint);
 
     margin-bottom: 15px;
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
 
     letter-spacing: 1.8px;
+
 }
 
 
 .section-intro h2 {
+
     font:
         600
-        clamp(40px,6vw,82px)
+        clamp(40px, 6vw, 82px)
         "Space Grotesk",
         sans-serif;
 
     line-height: .95;
 
     letter-spacing: -3px;
+
 }
 
 
-/* =========================================
-   WORK
-========================================= */
+/* =========================
+   EXPERIENCE
+========================= */
 
 .experience-list {
+
     border-top:
         1px solid var(--border);
+
 }
 
 
 .experience-item {
-    position: relative;
 
     display: grid;
 
     grid-template-columns:
-        70px
-        1.1fr
-        1fr;
+        70px 1.1fr 1fr;
 
     gap: 30px;
 
@@ -607,12 +652,14 @@ nav {
     cursor: pointer;
 
     transition:
-        padding .4s var(--ease),
-        background .3s ease;
+        padding .4s,
+        background .3s;
+
 }
 
 
 .experience-item:hover {
+
     padding-left: 28px;
     padding-right: 28px;
 
@@ -623,102 +670,76 @@ nav {
             var(--accent-soft),
             transparent
         );
+
 }
 
 
-.experience-index {
-    color: var(--text-faint);
-
-    font:
-        11px
-        "DM Mono",
-        monospace;
-}
-
-
+.experience-index,
 .experience-year {
+
     color: var(--text-faint);
 
-    margin-bottom: 7px;
-
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
+
 }
 
 
 .experience-main h3 {
+
     font:
-        600 32px
-        "Space Grotesk",
+        600 32px "Space Grotesk",
         sans-serif;
 
     letter-spacing: -1px;
+
 }
 
 
 .experience-company {
+
     color: var(--accent);
 
-    margin-top: 3px;
 }
 
 
 .experience-summary {
+
     display: flex;
 
-    align-items: center;
-
     justify-content: space-between;
-
-    gap: 20px;
 
     color: var(--text-soft);
 
     font-size: 13px;
+
 }
 
 
-.experience-summary b {
-    font-size: 23px;
-
-    font-weight: 400;
-
-    transition:
-        transform .3s var(--ease);
-}
-
-
-.experience-item:hover
-.experience-summary b {
-    transform:
-        translate(5px,-5px);
-}
-
-
-/* =========================================
+/* =========================
    PROJECTS
-========================================= */
+========================= */
 
 .project-list {
+
     display: flex;
 
     flex-direction: column;
 
     gap: 18px;
+
 }
 
 
 .project-item {
+
     position: relative;
 
     display: grid;
 
     grid-template-columns:
-        70px
-        1fr
-        60px;
+        70px 1fr 60px;
 
     gap: 30px;
 
@@ -733,119 +754,82 @@ nav {
     border:
         1px solid var(--border);
 
-    border-radius: 4px;
+    cursor: pointer;
 
     overflow: hidden;
-
-    cursor: pointer;
 
     transform-style: preserve-3d;
 
     transition:
         border-color .3s,
         box-shadow .4s;
-}
 
-
-.project-item::before {
-    content: "";
-
-    position: absolute;
-
-    width: 400px;
-    height: 400px;
-
-    left: var(--mouse-x,50%);
-    top: var(--mouse-y,50%);
-
-    transform:
-        translate(-50%,-50%);
-
-    background:
-        radial-gradient(
-            circle,
-            var(--accent-soft),
-            transparent 68%
-        );
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition:
-        opacity .3s ease;
 }
 
 
 .project-item:hover {
+
     border-color:
         var(--accent);
 
     box-shadow:
         0 25px 70px
         rgba(0,0,0,.08);
-}
 
-
-.project-item:hover::before {
-    opacity: 1;
 }
 
 
 .project-number {
-    position: relative;
 
     color: var(--text-faint);
 
     font:
-        11px
-        "DM Mono",
+        11px "DM Mono",
         monospace;
+
 }
 
 
 .project-category {
-    position: relative;
 
     color: var(--accent);
 
     margin-bottom: 14px;
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
 
     letter-spacing: 1.5px;
+
 }
 
 
 .project-info h3 {
-    position: relative;
 
     font:
         600
-        clamp(34px,5vw,70px)
+        clamp(34px, 5vw, 70px)
         "Space Grotesk",
         sans-serif;
 
     line-height: .95;
 
     letter-spacing: -3px;
+
 }
 
 
 .project-info > p {
-    position: relative;
 
     color: var(--text-soft);
 
     margin-top: 14px;
+
 }
 
 
 .project-tags {
-    position: relative;
 
     display: flex;
 
@@ -854,10 +838,12 @@ nav {
     gap: 8px;
 
     margin-top: 23px;
+
 }
 
 
 .project-tags span {
+
     padding:
         6px 10px;
 
@@ -869,49 +855,36 @@ nav {
     color: var(--text-soft);
 
     font:
-        9px
-        "DM Mono",
+        9px "DM Mono",
         monospace;
+
 }
 
 
 .project-arrow {
-    position: relative;
 
     font-size: 30px;
 
-    transition:
-        transform .35s var(--ease);
 }
 
 
-.project-item:hover
-.project-arrow {
-    transform:
-        translate(7px,-7px);
-}
+/* =========================
+   WORK CATEGORIES
+========================= */
 
+.works-grid {
 
-/* =========================================
-   CLUBS
-========================================= */
-
-.club-grid {
     display: grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3, 1fr);
 
-    gap: 15px;
+    gap: 18px;
+
 }
 
 
-.club-card {
-    position: relative;
-
-    min-height: 300px;
-
-    padding: 30px;
+.work-category {
 
     background:
         var(--surface);
@@ -926,57 +899,224 @@ nav {
     transform-style: preserve-3d;
 
     transition:
-        border-color .3s,
+        border-color .35s,
         box-shadow .4s;
+
 }
 
 
-.club-card::before {
-    content: "";
+.work-category:hover {
 
-    position: absolute;
-
-    width: 350px;
-    height: 350px;
-
-    left: var(--mouse-x,50%);
-    top: var(--mouse-y,50%);
-
-    transform:
-        translate(-50%,-50%);
-
-    background:
-        radial-gradient(
-            circle,
-            var(--accent-soft),
-            transparent 68%
-        );
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition:
-        opacity .3s;
-}
-
-
-.club-card:hover {
     border-color:
         var(--accent);
 
     box-shadow:
         0 25px 70px
         rgba(0,0,0,.08);
+
 }
 
 
-.club-card:hover::before {
-    opacity: 1;
+.work-image {
+
+    position: relative;
+
+    height: 340px;
+
+    background:
+        var(--surface-soft);
+
+    overflow: hidden;
+
+}
+
+
+.work-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .7s;
+
+}
+
+
+.work-category:hover
+.work-image img {
+
+    transform:
+        scale(1.06);
+
+}
+
+
+.image-placeholder {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--surface-soft),
+            transparent
+        );
+
+}
+
+
+.work-image img:not([src=""]) +
+.image-placeholder {
+
+    opacity: 0;
+
+}
+
+
+.image-placeholder span {
+
+    color:
+        var(--text-faint);
+
+    font:
+        11px "DM Mono",
+        monospace;
+
+    letter-spacing: 2px;
+
+}
+
+
+.work-category-info {
+
+    padding: 28px;
+
+}
+
+
+.work-category-info > p {
+
+    color: var(--accent);
+
+    font:
+        10px "DM Mono",
+        monospace;
+
+    letter-spacing: 1px;
+
+}
+
+
+.work-category-info h3 {
+
+    margin-top: 18px;
+
+    font:
+        500 32px "Space Grotesk",
+        sans-serif;
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+
+}
+
+
+.work-open {
+
+    display: inline-block;
+
+    margin-top: 35px;
+
+    color: var(--text-soft);
+
+    font:
+        10px "DM Mono",
+        monospace;
+
+    transition:
+        color .25s;
+
+}
+
+
+.work-category:hover
+.work-open {
+
+    color: var(--accent);
+
+}
+
+
+/* =========================
+   CLUBS
+========================= */
+
+.club-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.club-card {
+
+    position: relative;
+
+    min-height: 300px;
+
+    padding: 30px;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+    cursor: pointer;
+
+    transform-style: preserve-3d;
+
+    transition:
+        border-color .3s,
+        box-shadow .4s;
+
+}
+
+
+.club-card:hover {
+
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.08);
+
 }
 
 
 .club-year {
+
     position: absolute;
 
     top: 30px;
@@ -985,50 +1125,47 @@ nav {
     color: var(--text-faint);
 
     font:
-        9px
-        "DM Mono",
+        9px "DM Mono",
         monospace;
+
 }
 
 
 .club-type {
-    position: relative;
 
     color: var(--accent);
 
     margin-bottom: 55px;
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
 
     letter-spacing: 1.5px;
+
 }
 
 
 .club-card h3 {
-    position: relative;
 
     font:
-        600 40px
-        "Space Grotesk",
+        600 40px "Space Grotesk",
         sans-serif;
 
     letter-spacing: -2px;
+
 }
 
 
 .club-card > p:not(.club-type) {
-    position: relative;
 
     color: var(--text-soft);
 
-    margin-top: 7px;
 }
 
 
 .club-arrow {
+
     position: absolute;
 
     right: 30px;
@@ -1036,58 +1173,58 @@ nav {
 
     font-size: 28px;
 
-    transition:
-        transform .3s var(--ease);
 }
 
 
-.club-card:hover
-.club-arrow {
-    transform:
-        translate(6px,-6px);
-}
-
-
-/* =========================================
+/* =========================
    ABOUT
-========================================= */
+========================= */
 
 .about-grid {
+
     display: grid;
 
     grid-template-columns:
         1.2fr .8fr;
 
     gap: 100px;
+
 }
 
 
 .about-large {
+
     font:
         500
-        clamp(35px,5vw,65px)
+        clamp(35px, 5vw, 65px)
         "Space Grotesk",
         sans-serif;
 
     line-height: 1.05;
 
     letter-spacing: -2px;
+
 }
 
 
 .about-details {
+
     color: var(--text-soft);
 
     font-size: 16px;
+
 }
 
 
 .about-details p + p {
+
     margin-top: 25px;
+
 }
 
 
 .interest-list {
+
     display: flex;
 
     flex-wrap: wrap;
@@ -1100,10 +1237,12 @@ nav {
 
     border-top:
         1px solid var(--border);
+
 }
 
 
 .interest-list span {
+
     padding:
         9px 15px;
 
@@ -1115,17 +1254,18 @@ nav {
     color: var(--text-soft);
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
+
 }
 
 
-/* =========================================
+/* =========================
    CONTACT
-========================================= */
+========================= */
 
 .contact-section {
+
     width:
         min(
             var(--max-width),
@@ -1136,53 +1276,61 @@ nav {
 
     padding:
         170px 0 100px;
+
 }
 
 
 .contact-inner {
+
     max-width: 1000px;
+
 }
 
 
 .contact-inner h2 {
+
     margin:
         30px 0 45px;
 
     font:
         600
-        clamp(60px,10vw,140px)
+        clamp(60px, 10vw, 140px)
         "Space Grotesk",
         sans-serif;
 
     line-height: .85;
 
     letter-spacing: -6px;
+
 }
 
 
 .contact-description {
+
     max-width: 450px;
 
     color: var(--text-soft);
 
-    font-size: 17px;
 }
 
 
 .contact-links {
+
     display: grid;
 
     grid-template-columns:
-        repeat(4,1fr);
+        repeat(4, 1fr);
 
     margin-top: 65px;
 
     border-top:
         1px solid var(--border);
+
 }
 
 
 .contact-link {
+
     display: flex;
 
     justify-content: space-between;
@@ -1194,28 +1342,31 @@ nav {
         1px solid var(--border);
 
     font:
-        11px
-        "DM Mono",
+        11px "DM Mono",
         monospace;
 
     transition:
         color .25s,
-        padding .3s var(--ease);
+        padding .3s;
+
 }
 
 
 .contact-link:hover {
+
     color: var(--accent);
 
     padding-left: 22px;
+
 }
 
 
-/* =========================================
-   DETAIL OVERLAY
-========================================= */
+/* =========================
+   DETAIL PANEL
+========================= */
 
 .detail-overlay {
+
     position: fixed;
 
     inset: 0;
@@ -1233,33 +1384,30 @@ nav {
     z-index: 7000;
 
     transition:
-        opacity .4s ease,
-        visibility .4s ease;
+        opacity .4s,
+        visibility .4s;
+
 }
 
 
 .detail-overlay.active {
+
     opacity: 1;
 
     visibility: visible;
+
 }
 
 
-/* =========================================
-   DETAIL PANEL
-========================================= */
-
 .detail-panel {
+
     position: fixed;
 
     top: 0;
     right: 0;
 
     width:
-        min(
-            650px,
-            100%
-        );
+        min(650px, 100%);
 
     height: 100vh;
 
@@ -1279,23 +1427,24 @@ nav {
         translateX(100%);
 
     transition:
-        transform .55s var(--ease);
+        transform .55s cubic-bezier(.22,.61,.36,1);
+
 }
 
 
 .detail-panel.active {
+
     transform:
         translateX(0);
+
 }
 
 
-.detail-close {
-    display: block;
+.detail-close,
+.gallery-close {
 
     width: 42px;
     height: 42px;
-
-    margin-left: auto;
 
     border-radius: 50%;
 
@@ -1316,89 +1465,110 @@ nav {
         transform .3s,
         color .25s,
         background .25s;
+
 }
 
 
-.detail-close:hover {
+.detail-close {
+
+    display: block;
+
+    margin-left: auto;
+
+}
+
+
+.detail-close:hover,
+.gallery-close:hover {
+
     transform:
         rotate(90deg);
 
     background:
         var(--accent);
 
-    color:
-        white;
+    color: white;
 
     border-color:
         var(--accent);
+
 }
 
 
 .detail-header {
+
     margin-top: 55px;
 
     padding-bottom: 45px;
 
     border-bottom:
         1px solid var(--border);
+
 }
 
 
 .detail-header p {
-    color:
-        var(--accent);
+
+    color: var(--accent);
 
     margin-bottom: 18px;
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
 
     letter-spacing: 1.5px;
+
 }
 
 
 .detail-header h2 {
+
     font:
         600
-        clamp(42px,6vw,70px)
+        clamp(42px, 6vw, 70px)
         "Space Grotesk",
         sans-serif;
 
     line-height: .95;
 
     letter-spacing: -3px;
+
 }
 
 
 .detail-header h3 {
+
     margin-top: 15px;
 
     color: var(--text-soft);
 
-    font-size: 16px;
-
     font-weight: 400;
+
 }
 
 
 .detail-content {
+
     padding:
         45px 0;
+
 }
 
 
 .detail-block {
+
     padding:
         30px 0;
 
     border-bottom:
         1px solid var(--border);
+
 }
 
 
 .detail-block span {
+
     display: block;
 
     color: var(--accent);
@@ -1406,49 +1576,242 @@ nav {
     margin-bottom: 18px;
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
 
     letter-spacing: 1.5px;
 
     text-transform: uppercase;
+
 }
 
 
 .detail-block p {
+
     color: var(--text-soft);
 
     line-height: 1.8;
+
 }
 
 
 .detail-block ul {
+
     list-style: none;
+
 }
 
 
 .detail-block li {
+
     padding: 8px 0;
 
     color: var(--text-soft);
+
 }
 
 
 .detail-block li::before {
+
     content: "→";
 
     color: var(--accent);
 
     margin-right: 10px;
+
 }
 
 
-/* =========================================
+.detail-project-image {
+
+    margin-top: 35px;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    background:
+        var(--surface-soft);
+
+}
+
+
+.detail-project-image img {
+
+    width: 100%;
+
+    display: block;
+
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        var(--bg);
+
+    z-index: 9000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    overflow-y: auto;
+
+    transition:
+        opacity .35s,
+        visibility .35s;
+
+}
+
+
+.gallery-modal.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.gallery-inner {
+
+    width:
+        min(
+            1300px,
+            calc(100% - 70px)
+        );
+
+    margin: auto;
+
+    padding:
+        50px 0 100px;
+
+}
+
+
+.gallery-close {
+
+    display: block;
+
+    margin-left: auto;
+
+}
+
+
+.gallery-heading {
+
+    margin:
+        70px 0 50px;
+
+}
+
+
+.gallery-heading p {
+
+    color: var(--accent);
+
+    font:
+        10px "DM Mono",
+        monospace;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+.gallery-heading h2 {
+
+    margin-top: 15px;
+
+    font:
+        600
+        clamp(50px, 8vw, 100px)
+        "Space Grotesk",
+        sans-serif;
+
+    line-height: .9;
+
+    letter-spacing: -5px;
+
+}
+
+
+.gallery-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.gallery-item {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        var(--surface);
+
+    border:
+        1px solid var(--border);
+
+}
+
+
+.gallery-item img {
+
+    display: block;
+
+    width: 100%;
+
+    transition:
+        transform .5s;
+
+}
+
+
+.gallery-item:hover img {
+
+    transform:
+        scale(1.035);
+
+}
+
+
+.gallery-caption {
+
+    padding:
+        15px 18px;
+
+    color: var(--text-soft);
+
+    font:
+        10px "DM Mono",
+        monospace;
+
+}
+
+
+/* =========================
    FOOTER
-========================================= */
+========================= */
 
 footer {
+
     width:
         min(
             var(--max-width),
@@ -1463,34 +1826,90 @@ footer {
     border-top:
         1px solid var(--border);
 
-    color:
-        var(--text-faint);
+    color: var(--text-faint);
 
     font:
-        10px
-        "DM Mono",
+        10px "DM Mono",
         monospace;
+
 }
 
 
 .footer-top,
 .footer-bottom {
+
     display: flex;
 
     justify-content: space-between;
+
 }
 
 
 .footer-bottom {
+
     margin-top: 10px;
+
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* =========================
+   TABLET
+========================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+
+    .nav-links {
+
+        gap: 12px;
+
+    }
+
+
+    .nav-links a {
+
+        font-size: 9px;
+
+    }
+
+
+    .works-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .work-image {
+
+        height: 400px;
+
+    }
+
+
+    .club-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    #spotlight,
+    #cursor-label {
+
+        display: none;
+
+    }
+
 
     nav,
     .hero,
@@ -1505,95 +1924,6 @@ footer {
 
 
     .nav-links {
-        display: none;
-    }
-
-
-    .hero-title {
-
-        font-size:
-            clamp(
-                58px,
-                14vw,
-                115px
-            );
-
-        letter-spacing: -4px;
-
-    }
-
-
-    .hero-title span {
-        margin-left: 0;
-    }
-
-
-    .hero-bottom {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 35px;
-
-    }
-
-
-    .hero-links {
-
-        flex-direction: row;
-
-        flex-wrap: wrap;
-
-    }
-
-
-    .experience-item {
-
-        grid-template-columns:
-            45px 1fr;
-
-    }
-
-
-    .experience-summary {
-
-        grid-column: 2;
-
-    }
-
-
-    .club-grid {
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-
-    .about-grid {
-
-        grid-template-columns:
-            1fr;
-
-        gap: 50px;
-
-    }
-
-
-    .contact-links {
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    #spotlight,
-    #cursor-label {
 
         display: none;
 
@@ -1613,18 +1943,36 @@ footer {
     .hero-title {
 
         font-size:
-            clamp(
-                46px,
-                15vw,
-                82px
-            );
+            clamp(48px, 15vw, 85px);
+
+        letter-spacing: -4px;
+
+    }
+
+
+    .hero-title span {
+
+        margin-left: 0;
 
     }
 
 
     .hero-bottom {
 
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
         margin-top: 55px;
+
+    }
+
+
+    .hero-links {
+
+        flex-direction: row;
+
+        flex-wrap: wrap;
 
     }
 
@@ -1656,10 +2004,17 @@ footer {
 
     .experience-item {
 
-        padding:
-            28px 5px;
+        grid-template-columns:
+            40px 1fr;
 
         gap: 15px;
+
+    }
+
+
+    .experience-summary {
+
+        grid-column: 2;
 
     }
 
@@ -1688,8 +2043,6 @@ footer {
 
         font-size: 38px;
 
-        letter-spacing: -2px;
-
     }
 
 
@@ -1704,6 +2057,30 @@ footer {
     .club-card {
 
         min-height: 260px;
+
+    }
+
+
+    .work-image {
+
+        height: 280px;
+
+    }
+
+
+    .work-category-info h3 {
+
+        font-size: 28px;
+
+    }
+
+
+    .about-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 50px;
 
     }
 
@@ -1746,10 +2123,34 @@ footer {
     }
 
 
-    footer {
+    .gallery-inner {
 
         width:
             calc(100% - 40px);
+
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .gallery-heading {
+
+        margin-top: 50px;
+
+    }
+
+
+    .gallery-heading h2 {
+
+        font-size: 55px;
+
+        letter-spacing: -3px;
 
     }
 
