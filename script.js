@@ -1,49 +1,66 @@
-/* =========================================================
-   GAYATHRI J. PISHARADY
-   PORTFOLIO
-   SCRIPT.JS
-   ========================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
-
     const body = document.body;
-    const header = document.getElementById("site-header");
-    const progressBar = document.getElementById("progress-bar");
-    const spotlight = document.getElementById("spotlight");
-    const cursorLabel = document.getElementById("cursor-label");
-    const themeToggle = document.getElementById("theme-toggle");
 
-    const overlay = document.getElementById("detail-overlay");
+    const header =
+        document.getElementById("site-header");
 
-    const cards = document.querySelectorAll(".interactive-card");
-    const panels = document.querySelectorAll(".detail-panel");
+    const progress =
+        document.getElementById("progress-bar");
 
-    const navLinks = document.querySelectorAll(".nav-links a");
+    const spotlight =
+        document.getElementById("spotlight");
+
+    const cursor =
+        document.getElementById("cursor-label");
+
+    const themeButton =
+        document.getElementById("theme-toggle");
+
+    const themeIcon =
+        document.querySelector(".theme-icon");
+
+    const overlay =
+        document.getElementById("detail-overlay");
+
+    const cards =
+        document.querySelectorAll(".interactive-card");
+
+    const panels =
+        document.querySelectorAll(".detail-panel");
+
+    const navLinks =
+        document.querySelectorAll(".nav-links a");
 
 
+    /* =========================================
+       THEME
+    ========================================= */
 
-    /* =====================================================
-       01. THEME
-    ===================================================== */
+    const savedTheme =
+        localStorage.getItem("gayathri-theme");
 
-    const savedTheme = localStorage.getItem("gayathri-theme");
+    const systemDark =
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
 
-    if (savedTheme === "dark") {
+
+    if (
+        savedTheme === "dark" ||
+        (!savedTheme && systemDark)
+    ) {
+
         body.classList.add("dark");
-    }
 
-    updateThemeIcon();
+    }
 
 
     function updateThemeIcon() {
 
-        if (!themeToggle) return;
+        if (!themeIcon) return;
 
-        themeToggle.textContent =
+        themeIcon.textContent =
             body.classList.contains("dark")
                 ? "☀"
                 : "☾";
@@ -51,9 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (themeToggle) {
+    updateThemeIcon();
 
-        themeToggle.addEventListener("click", () => {
+
+    themeButton?.addEventListener(
+        "click",
+        () => {
 
             body.classList.toggle("dark");
 
@@ -69,144 +89,129 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateThemeIcon();
 
-        });
-
-    }
-
+        }
+    );
 
 
-    /* =====================================================
-       02. SCROLL PROGRESS
-    ===================================================== */
+    /* =========================================
+       SCROLL PROGRESS
+    ========================================= */
 
-    function updateScrollProgress() {
+    function updateScroll() {
 
         const scrollTop =
             window.scrollY;
 
-        const documentHeight =
+        const maxScroll =
             document.documentElement.scrollHeight
             - window.innerHeight;
 
-        const progress =
-            documentHeight > 0
-                ? (scrollTop / documentHeight) * 100
-                : 0;
 
-        if (progressBar) {
-            progressBar.style.width =
-                `${progress}%`;
+        if (progress) {
+
+            const percentage =
+                maxScroll > 0
+                    ? (scrollTop / maxScroll) * 100
+                    : 0;
+
+            progress.style.width =
+                `${percentage}%`;
+
+        }
+
+
+        if (header) {
+
+            header.classList.toggle(
+                "scrolled",
+                scrollTop > 30
+            );
+
         }
 
     }
+
 
     window.addEventListener(
         "scroll",
-        updateScrollProgress,
+        updateScroll,
         { passive: true }
     );
 
-    updateScrollProgress();
+
+    updateScroll();
 
 
+    /* =========================================
+       SPOTLIGHT
+    ========================================= */
 
-    /* =====================================================
-       03. HEADER SCROLL EFFECT
-    ===================================================== */
+    let mouseX = 0;
+    let mouseY = 0;
 
-    function updateHeader() {
-
-        if (!header) return;
-
-        if (window.scrollY > 40) {
-
-            header.classList.add("scrolled");
-
-        } else {
-
-            header.classList.remove("scrolled");
-
-        }
-
-    }
-
-    window.addEventListener(
-        "scroll",
-        updateHeader,
-        { passive: true }
-    );
-
-    updateHeader();
-
-
-
-    /* =====================================================
-       04. CURSOR SPOTLIGHT
-    ===================================================== */
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-
-    let spotlightX = mouseX;
-    let spotlightY = mouseY;
-
-
-    function animateSpotlight() {
-
-        spotlightX +=
-            (mouseX - spotlightX) * 0.12;
-
-        spotlightY +=
-            (mouseY - spotlightY) * 0.12;
-
-
-        if (spotlight) {
-
-            spotlight.style.left =
-                `${spotlightX}px`;
-
-            spotlight.style.top =
-                `${spotlightY}px`;
-
-        }
-
-
-        if (cursorLabel) {
-
-            cursorLabel.style.left =
-                `${mouseX}px`;
-
-            cursorLabel.style.top =
-                `${mouseY}px`;
-
-        }
-
-
-        requestAnimationFrame(
-            animateSpotlight
-        );
-
-    }
-
-    animateSpotlight();
+    let currentX = 0;
+    let currentY = 0;
 
 
     document.addEventListener(
         "mousemove",
-        (event) => {
+        event => {
 
-            mouseX = event.clientX;
-            mouseY = event.clientY;
+            mouseX =
+                event.clientX;
+
+            mouseY =
+                event.clientY;
 
         },
         { passive: true }
     );
 
 
+    function animateCursor() {
 
-    /* =====================================================
-       05. INTERACTIVE CURSOR
-    ===================================================== */
+        currentX +=
+            (mouseX - currentX) * .12;
+
+        currentY +=
+            (mouseY - currentY) * .12;
+
+
+        if (spotlight) {
+
+            spotlight.style.left =
+                `${currentX}px`;
+
+            spotlight.style.top =
+                `${currentY}px`;
+
+        }
+
+
+        if (cursor) {
+
+            cursor.style.left =
+                `${mouseX}px`;
+
+            cursor.style.top =
+                `${mouseY}px`;
+
+        }
+
+
+        requestAnimationFrame(
+            animateCursor
+        );
+
+    }
+
+
+    animateCursor();
+
+
+    /* =========================================
+       CARD CURSOR
+    ========================================= */
 
     cards.forEach(card => {
 
@@ -216,11 +221,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (
                     window.matchMedia(
-                        "(pointer: fine)"
+                        "(pointer:fine)"
                     ).matches
                 ) {
 
-                    cursorLabel?.classList.add(
+                    cursor?.classList.add(
                         "visible"
                     );
 
@@ -234,157 +239,109 @@ document.addEventListener("DOMContentLoaded", () => {
             "mouseleave",
             () => {
 
-                cursorLabel?.classList.remove(
+                cursor?.classList.remove(
                     "visible"
                 );
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       06. PROJECT / CLUB / EXPERIENCE
-           MOUSE POSITION
-    ===================================================== */
-
-    cards.forEach(card => {
-
-        card.addEventListener(
-            "mousemove",
-            event => {
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                const percentX =
-                    (x / rect.width) * 100;
-
-                const percentY =
-                    (y / rect.height) * 100;
-
-
-                card.style.setProperty(
-                    "--mouse-x",
-                    `${percentX}%`
-                );
-
-                card.style.setProperty(
-                    "--mouse-y",
-                    `${percentY}%`
-                );
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       07. 3D CARD TILT
-    ===================================================== */
-
-    const tiltCards =
-        document.querySelectorAll(
-            ".project-item, .club-card"
-        );
-
-
-    tiltCards.forEach(card => {
-
-        card.addEventListener(
-            "mousemove",
-            event => {
-
-                if (
-                    !window.matchMedia(
-                        "(pointer: fine)"
-                    ).matches
-                ) {
-                    return;
-                }
-
-
-                const rect =
-                    card.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-
-                const centerX =
-                    rect.width / 2;
-
-                const centerY =
-                    rect.height / 2;
-
-
-                const rotateY =
-                    ((x - centerX) / centerX) * 4;
-
-                const rotateX =
-                    ((centerY - y) / centerY) * 4;
-
-
-                card.style.transform =
-                    `perspective(1000px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-7px)
-                     scale(1.01)`;
-
-            }
-        );
-
-
-        card.addEventListener(
-            "mouseleave",
-            () => {
 
                 card.style.transform = "";
 
             }
         );
 
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX
+                    - rect.left;
+
+
+                const y =
+                    event.clientY
+                    - rect.top;
+
+
+                card.style.setProperty(
+                    "--mouse-x",
+                    `${x}px`
+                );
+
+
+                card.style.setProperty(
+                    "--mouse-y",
+                    `${y}px`
+                );
+
+
+                if (
+                    !window.matchMedia(
+                        "(pointer:fine)"
+                    ).matches
+                ) {
+                    return;
+                }
+
+
+                if (
+                    card.classList.contains(
+                        "project-item"
+                    ) ||
+                    card.classList.contains(
+                        "club-card"
+                    )
+                ) {
+
+                    const centerX =
+                        rect.width / 2;
+
+                    const centerY =
+                        rect.height / 2;
+
+
+                    const rotateX =
+                        ((centerY - y)
+                        / centerY) * 3;
+
+
+                    const rotateY =
+                        ((x - centerX)
+                        / centerX) * 3;
+
+
+                    card.style.transform =
+                        `perspective(1000px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)
+                         translateY(-6px)
+                         scale(1.01)`;
+
+                }
+
+            }
+        );
+
     });
 
 
-
-    /* =====================================================
-       08. DETAIL PANELS
-    ===================================================== */
+    /* =========================================
+       DETAIL PANELS
+    ========================================= */
 
     function openPanel(id) {
-
-        if (!id) return;
-
 
         const panel =
             document.getElementById(
                 `modal-${id}`
             );
 
-        if (!panel) {
 
-            console.warn(
-                `No detail panel found for: ${id}`
-            );
-
-            return;
-
-        }
+        if (!panel) return;
 
 
         panels.forEach(item => {
@@ -393,21 +350,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 "active"
             );
 
-            item.setAttribute(
-                "aria-hidden",
-                "true"
-            );
-
         });
 
 
         panel.classList.add(
             "active"
-        );
-
-        panel.setAttribute(
-            "aria-hidden",
-            "false"
         );
 
 
@@ -420,40 +367,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "modal-open"
         );
 
-
-        document
-            .querySelectorAll(".interactive-card")
-            .forEach(item => {
-
-                item.classList.remove(
-                    "selected"
-                );
-
-            });
-
-
-        document
-            .querySelector(
-                `[data-modal="${id}"]`
-            )
-            ?.classList.add(
-                "selected"
-            );
-
     }
 
 
-    function closePanels() {
+    function closePanel() {
 
         panels.forEach(panel => {
 
             panel.classList.remove(
                 "active"
-            );
-
-            panel.setAttribute(
-                "aria-hidden",
-                "true"
             );
 
         });
@@ -468,24 +390,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "modal-open"
         );
 
-
-        document
-            .querySelectorAll(".interactive-card")
-            .forEach(card => {
-
-                card.classList.remove(
-                    "selected"
-                );
-
-            });
-
     }
 
-
-
-    /* =====================================================
-       09. CARD CLICK
-    ===================================================== */
 
     cards.forEach(card => {
 
@@ -504,18 +410,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-
-    /* =====================================================
-       10. CLOSE BUTTONS
-    ===================================================== */
-
     document
         .querySelectorAll(".detail-close")
         .forEach(button => {
 
             button.addEventListener(
                 "click",
-                closePanels
+                closePanel
             );
 
         });
@@ -523,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     overlay?.addEventListener(
         "click",
-        closePanels
+        closePanel
     );
 
 
@@ -535,7 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 event.key === "Escape"
             ) {
 
-                closePanels();
+                closePanel();
 
             }
 
@@ -543,31 +444,11 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
+    /* =========================================
+       ROLE ROTATION
+    ========================================= */
 
-    /* =====================================================
-       11. PREVENT PANEL CLICK FROM CLOSING
-    ===================================================== */
-
-    panels.forEach(panel => {
-
-        panel.addEventListener(
-            "click",
-            event => {
-
-                event.stopPropagation();
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       12. ROLE TEXT ANIMATION
-    ===================================================== */
-
-    const roleElement =
+    const role =
         document.getElementById(
             "changing-role"
         );
@@ -591,12 +472,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let roleIndex = 0;
 
 
-    if (roleElement) {
+    if (role) {
 
         setInterval(() => {
 
-            roleElement.style.opacity = "0";
-            roleElement.style.transform =
+            role.style.opacity = "0";
+
+            role.style.transform =
                 "translateY(6px)";
 
 
@@ -607,98 +489,87 @@ document.addEventListener("DOMContentLoaded", () => {
                     % roles.length;
 
 
-                roleElement.textContent =
+                role.textContent =
                     roles[roleIndex];
 
 
-                roleElement.style.opacity =
+                role.style.opacity =
                     "1";
 
-                roleElement.style.transform =
+                role.style.transform =
                     "translateY(0)";
 
             }, 300);
 
         }, 3000);
 
-
-        roleElement.style.transition =
-            "opacity .3s ease, transform .3s ease";
-
     }
 
 
+    /* =========================================
+       MAGNETIC LINKS
+    ========================================= */
 
-    /* =====================================================
-       13. MAGNETIC LINKS
-    ===================================================== */
+    document
+        .querySelectorAll(".magnetic-link")
+        .forEach(link => {
 
-    const magneticLinks =
-        document.querySelectorAll(
-            ".magnetic-link"
-        );
+            link.addEventListener(
+                "mousemove",
+                event => {
+
+                    if (
+                        !window.matchMedia(
+                            "(pointer:fine)"
+                        ).matches
+                    ) {
+                        return;
+                    }
 
 
-    magneticLinks.forEach(link => {
+                    const rect =
+                        link.getBoundingClientRect();
 
-        link.addEventListener(
-            "mousemove",
-            event => {
 
-                if (
-                    !window.matchMedia(
-                        "(pointer: fine)"
-                    ).matches
-                ) {
-                    return;
+                    const x =
+                        event.clientX
+                        - rect.left
+                        - rect.width / 2;
+
+
+                    const y =
+                        event.clientY
+                        - rect.top
+                        - rect.height / 2;
+
+
+                    link.style.transform =
+                        `translate(
+                            ${x * .12}px,
+                            ${y * .12}px
+                        )`;
+
                 }
+            );
 
 
-                const rect =
-                    link.getBoundingClientRect();
+            link.addEventListener(
+                "mouseleave",
+                () => {
+
+                    link.style.transform = "";
+
+                }
+            );
+
+        });
 
 
-                const x =
-                    event.clientX
-                    - rect.left
-                    - rect.width / 2;
+    /* =========================================
+       REVEAL
+    ========================================= */
 
-
-                const y =
-                    event.clientY
-                    - rect.top
-                    - rect.height / 2;
-
-
-                link.style.transform =
-                    `translate(
-                        ${x * 0.15}px,
-                        ${y * 0.15}px
-                    )`;
-
-            }
-        );
-
-
-        link.addEventListener(
-            "mouseleave",
-            () => {
-
-                link.style.transform =
-                    "";
-
-            }
-        );
-
-    });
-
-
-
-    /* =====================================================
-       14. SCROLL REVEAL
-    ===================================================== */
-
-    const revealElements =
+    const revealItems =
         document.querySelectorAll(
             ".section-intro, \
              .experience-item, \
@@ -710,28 +581,31 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    revealElements.forEach(
-        element => {
+    if (
+        !window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
 
-            element.style.opacity = "0";
+        revealItems.forEach(item => {
 
-            element.style.transform =
-                "translateY(35px)";
+            item.style.opacity = "0";
 
-            element.style.transition =
-                "opacity .8s ease, \
-                 transform .8s cubic-bezier(.22,.61,.36,1)";
+            item.style.transform =
+                "translateY(28px)";
 
-        }
-    );
+            item.style.transition =
+                "opacity .7s ease, \
+                 transform .7s cubic-bezier(.22,.61,.36,1)";
+
+        });
 
 
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
 
-                entries.forEach(
-                    entry => {
+                    entries.forEach(entry => {
 
                         if (
                             !entry.isIntersecting
@@ -743,6 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         entry.target.style.opacity =
                             "1";
 
+
                         entry.target.style.transform =
                             "translateY(0)";
 
@@ -751,31 +626,27 @@ document.addEventListener("DOMContentLoaded", () => {
                             entry.target
                         );
 
-                    }
-                );
+                    });
 
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-
-    revealElements.forEach(
-        element => {
-
-            revealObserver.observe(
-                element
+                },
+                {
+                    threshold: .12
+                }
             );
 
-        }
-    );
+
+        revealItems.forEach(item => {
+
+            revealObserver.observe(item);
+
+        });
+
+    }
 
 
-
-    /* =====================================================
-       15. ACTIVE NAVIGATION
-    ===================================================== */
+    /* =========================================
+       ACTIVE NAV
+    ========================================= */
 
     const sections =
         document.querySelectorAll(
@@ -783,183 +654,65 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    const sectionObserver =
+    const navObserver =
         new IntersectionObserver(
             entries => {
 
-                entries.forEach(
-                    entry => {
-
-                        if (
-                            !entry.isIntersecting
-                        ) {
-                            return;
-                        }
-
-
-                        navLinks.forEach(
-                            link => {
-
-                                link.classList.remove(
-                                    "active"
-                                );
-
-                                const href =
-                                    link.getAttribute(
-                                        "href"
-                                    );
-
-
-                                if (
-                                    href ===
-                                    `#${entry.target.id}`
-                                ) {
-
-                                    link.classList.add(
-                                        "active"
-                                    );
-
-                                }
-
-                            }
-                        );
-
-                    }
-                );
-
-            },
-            {
-                threshold: 0.35
-            }
-        );
-
-
-    sections.forEach(
-        section => {
-
-            sectionObserver.observe(
-                section
-            );
-
-        }
-    );
-
-
-
-    /* =====================================================
-       16. SMOOTH ANCHOR NAVIGATION
-    ===================================================== */
-
-    document
-        .querySelectorAll(
-            'a[href^="#"]'
-        )
-        .forEach(link => {
-
-            link.addEventListener(
-                "click",
-                event => {
-
-                    const targetID =
-                        link.getAttribute(
-                            "href"
-                        );
-
+                entries.forEach(entry => {
 
                     if (
-                        targetID === "#"
+                        !entry.isIntersecting
                     ) {
                         return;
                     }
 
 
-                    const target =
-                        document.querySelector(
-                            targetID
+                    navLinks.forEach(link => {
+
+                        link.classList.remove(
+                            "active"
                         );
 
 
-                    if (!target) {
-                        return;
-                    }
+                        if (
+                            link.getAttribute(
+                                "href"
+                            ) ===
+                            `#${entry.target.id}`
+                        ) {
 
+                            link.classList.add(
+                                "active"
+                            );
 
-                    event.preventDefault();
+                        }
 
-
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
                     });
 
-                }
-            );
+                });
 
-        });
-
-
-
-    /* =====================================================
-       17. CARD OPEN LABEL
-    ===================================================== */
-
-    cards.forEach(card => {
-
-        card.addEventListener(
-            "mouseenter",
-            () => {
-
-                if (cursorLabel) {
-
-                    cursorLabel.querySelector(
-                        "span"
-                    ).textContent = "OPEN";
-
-                }
-
+            },
+            {
+                threshold: .35
             }
         );
+
+
+    sections.forEach(section => {
+
+        navObserver.observe(section);
 
     });
 
 
+    /* =========================================
+       ESCAPE PANEL ON MOBILE BACK
+    ========================================= */
 
-    /* =====================================================
-       18. REDUCED MOTION SUPPORT
-    ===================================================== */
-
-    const reducedMotion =
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        );
-
-
-    if (reducedMotion.matches) {
-
-        document
-            .querySelectorAll("*")
-            .forEach(element => {
-
-                element.style.scrollBehavior =
-                    "auto";
-
-            });
-
-    }
-
-
-
-    /* =====================================================
-       19. INITIAL LOAD
-    ===================================================== */
-
-    window.dispatchEvent(
-        new Event("scroll")
+    window.addEventListener(
+        "popstate",
+        closePanel
     );
 
-
-    console.log(
-        "Gayathri portfolio initialized."
-    );
 
 });
