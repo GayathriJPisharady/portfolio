@@ -1,44 +1,62 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const body = document.body;
+    const body =
+        document.body;
 
     const header =
-        document.getElementById("site-header");
+        document.getElementById(
+            "site-header"
+        );
 
     const progress =
-        document.getElementById("progress-bar");
+        document.getElementById(
+            "progress-bar"
+        );
 
     const spotlight =
-        document.getElementById("spotlight");
+        document.getElementById(
+            "spotlight"
+        );
 
     const cursor =
-        document.getElementById("cursor-label");
+        document.getElementById(
+            "cursor-label"
+        );
 
     const themeButton =
-        document.getElementById("theme-toggle");
+        document.getElementById(
+            "theme-toggle"
+        );
 
     const themeIcon =
-        document.querySelector(".theme-icon");
+        document.querySelector(
+            ".theme-icon"
+        );
 
     const overlay =
-        document.getElementById("detail-overlay");
+        document.getElementById(
+            "detail-overlay"
+        );
 
     const cards =
-        document.querySelectorAll(".interactive-card");
+        document.querySelectorAll(
+            ".interactive-card"
+        );
 
     const panels =
-        document.querySelectorAll(".detail-panel");
+        document.querySelectorAll(
+            ".detail-panel"
+        );
 
-    const navLinks =
-        document.querySelectorAll(".nav-links a");
 
-
-    /* =========================================
+    /* =========================
        THEME
-    ========================================= */
+    ========================== */
 
     const savedTheme =
-        localStorage.getItem("gayathri-theme");
+        localStorage.getItem(
+            "gayathri-theme"
+        );
 
     const systemDark =
         window.matchMedia(
@@ -51,7 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         (!savedTheme && systemDark)
     ) {
 
-        body.classList.add("dark");
+        body.classList.add(
+            "dark"
+        );
 
     }
 
@@ -75,16 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
         "click",
         () => {
 
-            body.classList.toggle("dark");
-
-            const theme =
-                body.classList.contains("dark")
-                    ? "dark"
-                    : "light";
+            body.classList.toggle(
+                "dark"
+            );
 
             localStorage.setItem(
                 "gayathri-theme",
-                theme
+                body.classList.contains("dark")
+                    ? "dark"
+                    : "light"
             );
 
             updateThemeIcon();
@@ -93,25 +112,26 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =========================================
-       SCROLL PROGRESS
-    ========================================= */
+    /* =========================
+       SCROLL
+    ========================== */
 
     function updateScroll() {
 
-        const scrollTop =
+        const top =
             window.scrollY;
 
-        const maxScroll =
-            document.documentElement.scrollHeight
+        const maximum =
+            document.documentElement
+                .scrollHeight
             - window.innerHeight;
 
 
         if (progress) {
 
             const percentage =
-                maxScroll > 0
-                    ? (scrollTop / maxScroll) * 100
+                maximum > 0
+                    ? (top / maximum) * 100
                     : 0;
 
             progress.style.width =
@@ -120,14 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        if (header) {
-
-            header.classList.toggle(
-                "scrolled",
-                scrollTop > 30
-            );
-
-        }
+        header?.classList.toggle(
+            "scrolled",
+            top > 30
+        );
 
     }
 
@@ -142,9 +158,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateScroll();
 
 
-    /* =========================================
-       SPOTLIGHT
-    ========================================= */
+    /* =========================
+       CURSOR SPOTLIGHT
+    ========================== */
 
     let mouseX = 0;
     let mouseY = 0;
@@ -171,10 +187,12 @@ document.addEventListener("DOMContentLoaded", () => {
     function animateCursor() {
 
         currentX +=
-            (mouseX - currentX) * .12;
+            (mouseX - currentX)
+            * .12;
 
         currentY +=
-            (mouseY - currentY) * .12;
+            (mouseY - currentY)
+            * .12;
 
 
         if (spotlight) {
@@ -209,9 +227,9 @@ document.addEventListener("DOMContentLoaded", () => {
     animateCursor();
 
 
-    /* =========================================
-       CARD CURSOR
-    ========================================= */
+    /* =========================
+       3D CARDS
+    ========================== */
 
     cards.forEach(card => {
 
@@ -288,31 +306,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const rotateX =
+                    ((centerY - y)
+                    / centerY) * 3;
+
+
+                const rotateY =
+                    ((x - centerX)
+                    / centerX) * 3;
+
+
                 if (
                     card.classList.contains(
                         "project-item"
                     ) ||
                     card.classList.contains(
                         "club-card"
+                    ) ||
+                    card.classList.contains(
+                        "work-category"
                     )
                 ) {
-
-                    const centerX =
-                        rect.width / 2;
-
-                    const centerY =
-                        rect.height / 2;
-
-
-                    const rotateX =
-                        ((centerY - y)
-                        / centerY) * 3;
-
-
-                    const rotateY =
-                        ((x - centerX)
-                        / centerX) * 3;
-
 
                     card.style.transform =
                         `perspective(1000px)
@@ -329,9 +350,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================================
+    /* =========================
        DETAIL PANELS
-    ========================================= */
+    ========================== */
 
     function openPanel(id) {
 
@@ -399,10 +420,17 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                const id =
+                const modal =
                     card.dataset.modal;
 
-                openPanel(id);
+
+                if (modal) {
+
+                    openPanel(
+                        modal
+                    );
+
+                }
 
             }
         );
@@ -411,7 +439,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     document
-        .querySelectorAll(".detail-close")
+        .querySelectorAll(
+            ".detail-close"
+        )
         .forEach(button => {
 
             button.addEventListener(
@@ -438,15 +468,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 closePanel();
 
+                closeGallery();
+
             }
 
         }
     );
 
 
-    /* =========================================
+    /* =========================
        ROLE ROTATION
-    ========================================= */
+    ========================== */
 
     const role =
         document.getElementById(
@@ -457,13 +489,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const roles = [
 
         "Mechanical Engineer",
-
         "CAD & Design Enthusiast",
-
         "Engineering Explorer",
-
         "Product Design Enthusiast",
-
         "Innovation Builder"
 
     ];
@@ -476,7 +504,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setInterval(() => {
 
-            role.style.opacity = "0";
+            role.style.opacity =
+                "0";
 
             role.style.transform =
                 "translateY(6px)";
@@ -506,12 +535,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================
+    /* =========================
        MAGNETIC LINKS
-    ========================================= */
+    ========================== */
 
     document
-        .querySelectorAll(".magnetic-link")
+        .querySelectorAll(
+            ".magnetic-link"
+        )
         .forEach(link => {
 
             link.addEventListener(
@@ -557,7 +588,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 "mouseleave",
                 () => {
 
-                    link.style.transform = "";
+                    link.style.transform =
+                        "";
 
                 }
             );
@@ -565,21 +597,300 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-    /* =========================================
-       REVEAL
-    ========================================= */
+    /* =========================
+       GALLERY DATA
+    ========================== */
 
-    const revealItems =
-        document.querySelectorAll(
-            ".section-intro, \
-             .experience-item, \
-             .project-item, \
-             .club-card, \
-             .about-grid, \
-             .interest-list, \
-             .contact-inner"
+    const galleryData = {
+
+        cad: {
+
+            category:
+                "01 · CAD & 3D",
+
+            title:
+                "Assemblies, models & renders.",
+
+            images: [
+
+                {
+                    src:
+                        "images/cad/cad-01.jpg",
+
+                    caption:
+                        "CAD Assembly"
+                },
+
+                {
+                    src:
+                        "images/cad/cad-02.jpg",
+
+                    caption:
+                        "3D Mechanical Model"
+                },
+
+                {
+                    src:
+                        "images/cad/cad-03.jpg",
+
+                    caption:
+                        "Product / Component Design"
+                },
+
+                {
+                    src:
+                        "images/cad/cad-04.jpg",
+
+                    caption:
+                        "Assembly / Render"
+                }
+
+            ]
+
+        },
+
+
+        drawings: {
+
+            category:
+                "02 · ENGINEERING DRAWINGS",
+
+            title:
+                "Parts, assemblies & technical drawings.",
+
+            images: [
+
+                {
+                    src:
+                        "images/drawings/drawing-01.jpg",
+
+                    caption:
+                        "Engineering Drawing"
+                },
+
+                {
+                    src:
+                        "images/drawings/drawing-02.jpg",
+
+                    caption:
+                        "Dimensioned Part Drawing"
+                },
+
+                {
+                    src:
+                        "images/drawings/drawing-03.jpg",
+
+                    caption:
+                        "Assembly Drawing"
+                },
+
+                {
+                    src:
+                        "images/drawings/drawing-04.jpg",
+
+                    caption:
+                        "Technical Drawing"
+                }
+
+            ]
+
+        },
+
+
+        graphic: {
+
+            category:
+                "03 · GRAPHIC DESIGN",
+
+            title:
+                "Posters, branding & visual communication.",
+
+            images: [
+
+                {
+                    src:
+                        "images/graphic-design/design-01.jpg",
+
+                    caption:
+                        "Event Poster"
+                },
+
+                {
+                    src:
+                        "images/graphic-design/design-02.jpg",
+
+                    caption:
+                        "Social Media Design"
+                },
+
+                {
+                    src:
+                        "images/graphic-design/design-03.jpg",
+
+                    caption:
+                        "Certificate / Visual Design"
+                },
+
+                {
+                    src:
+                        "images/graphic-design/design-04.jpg",
+
+                    caption:
+                        "Event Branding"
+                }
+
+            ]
+
+        }
+
+    };
+
+
+    /* =========================
+       GALLERY
+    ========================== */
+
+    const galleryModal =
+        document.getElementById(
+            "gallery-modal"
         );
 
+    const galleryGrid =
+        document.getElementById(
+            "gallery-grid"
+        );
+
+    const galleryCategory =
+        document.getElementById(
+            "gallery-category"
+        );
+
+    const galleryTitle =
+        document.getElementById(
+            "gallery-title"
+        );
+
+    const galleryClose =
+        document.getElementById(
+            "gallery-close"
+        );
+
+
+    function openGallery(type) {
+
+        const data =
+            galleryData[type];
+
+
+        if (!data) return;
+
+
+        galleryCategory.textContent =
+            data.category;
+
+
+        galleryTitle.textContent =
+            data.title;
+
+
+        galleryGrid.innerHTML =
+            "";
+
+
+        data.images.forEach(
+            item => {
+
+                const figure =
+                    document.createElement(
+                        "figure"
+                    );
+
+
+                figure.className =
+                    "gallery-item";
+
+
+                figure.innerHTML = `
+
+                    <img
+                        src="${item.src}"
+                        alt="${item.caption}"
+                        loading="lazy"
+                    >
+
+                    <figcaption
+                        class="gallery-caption">
+
+                        ${item.caption}
+
+                    </figcaption>
+
+                `;
+
+
+                galleryGrid.appendChild(
+                    figure
+                );
+
+            }
+        );
+
+
+        galleryModal.classList.add(
+            "active"
+        );
+
+
+        body.classList.add(
+            "modal-open"
+        );
+
+    }
+
+
+    function closeGallery() {
+
+        galleryModal?.classList.remove(
+            "active"
+        );
+
+
+        body.classList.remove(
+            "modal-open"
+        );
+
+    }
+
+
+    document
+        .querySelectorAll(
+            "[data-gallery]"
+        )
+        .forEach(card => {
+
+            card.addEventListener(
+                "click",
+                () => {
+
+                    openGallery(
+                        card.dataset.gallery
+                    );
+
+                }
+            );
+
+        });
+
+
+    galleryClose?.addEventListener(
+        "click",
+        closeGallery
+    );
+
+
+    /* =========================
+       REVEAL
+    ========================== */
 
     if (
         !window.matchMedia(
@@ -587,9 +898,23 @@ document.addEventListener("DOMContentLoaded", () => {
         ).matches
     ) {
 
+        const revealItems =
+            document.querySelectorAll(
+                ".section-intro, \
+                 .experience-item, \
+                 .project-item, \
+                 .work-category, \
+                 .club-card, \
+                 .about-grid, \
+                 .interest-list, \
+                 .contact-inner"
+            );
+
+
         revealItems.forEach(item => {
 
-            item.style.opacity = "0";
+            item.style.opacity =
+                "0";
 
             item.style.transform =
                 "translateY(28px)";
@@ -601,32 +926,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        const revealObserver =
+        const observer =
             new IntersectionObserver(
                 entries => {
 
-                    entries.forEach(entry => {
+                    entries.forEach(
+                        entry => {
 
-                        if (
-                            !entry.isIntersecting
-                        ) {
-                            return;
+                            if (
+                                !entry.isIntersecting
+                            ) {
+                                return;
+                            }
+
+
+                            entry.target.style.opacity =
+                                "1";
+
+
+                            entry.target.style.transform =
+                                "translateY(0)";
+
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
                         }
-
-
-                        entry.target.style.opacity =
-                            "1";
-
-
-                        entry.target.style.transform =
-                            "translateY(0)";
-
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    });
+                    );
 
                 },
                 {
@@ -637,16 +964,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         revealItems.forEach(item => {
 
-            revealObserver.observe(item);
+            observer.observe(item);
 
         });
 
     }
 
 
-    /* =========================================
+    /* =========================
        ACTIVE NAV
-    ========================================= */
+    ========================== */
 
     const sections =
         document.querySelectorAll(
@@ -654,42 +981,52 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-links a"
+        );
+
+
     const navObserver =
         new IntersectionObserver(
             entries => {
 
-                entries.forEach(entry => {
-
-                    if (
-                        !entry.isIntersecting
-                    ) {
-                        return;
-                    }
-
-
-                    navLinks.forEach(link => {
-
-                        link.classList.remove(
-                            "active"
-                        );
-
+                entries.forEach(
+                    entry => {
 
                         if (
-                            link.getAttribute(
-                                "href"
-                            ) ===
-                            `#${entry.target.id}`
+                            !entry.isIntersecting
                         ) {
-
-                            link.classList.add(
-                                "active"
-                            );
-
+                            return;
                         }
 
-                    });
 
-                });
+                        navLinks.forEach(
+                            link => {
+
+                                link.classList.remove(
+                                    "active"
+                                );
+
+
+                                if (
+                                    link.getAttribute(
+                                        "href"
+                                    ) ===
+                                    `#${entry.target.id}`
+                                ) {
+
+                                    link.classList.add(
+                                        "active"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
 
             },
             {
@@ -700,19 +1037,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections.forEach(section => {
 
-        navObserver.observe(section);
+        navObserver.observe(
+            section
+        );
 
     });
-
-
-    /* =========================================
-       ESCAPE PANEL ON MOBILE BACK
-    ========================================= */
-
-    window.addEventListener(
-        "popstate",
-        closePanel
-    );
-
 
 });
