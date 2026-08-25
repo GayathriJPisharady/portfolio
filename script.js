@@ -1,969 +1,965 @@
-/* ==========================================
-   PORTFOLIO V2
-   Part 1
-========================================== */
+/* =========================================================
+   GAYATHRI J. PISHARADY
+   PORTFOLIO
+   SCRIPT.JS
+   ========================================================= */
 
-/* ==========================
-   SELECTORS
-========================== */
+document.addEventListener("DOMContentLoaded", () => {
 
-const body = document.body;
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
 
-const themeBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+    const header = document.getElementById("site-header");
+    const progressBar = document.getElementById("progress-bar");
+    const spotlight = document.getElementById("spotlight");
+    const cursorLabel = document.getElementById("cursor-label");
+    const themeToggle = document.getElementById("theme-toggle");
 
-const spotlight = document.getElementById("spotlight");
+    const overlay = document.getElementById("detail-overlay");
 
-const progressBar = document.getElementById("progress-bar");
+    const cards = document.querySelectorAll(".interactive-card");
+    const panels = document.querySelectorAll(".detail-panel");
 
-const header = document.querySelector("header");
-
-const sections = document.querySelectorAll("section");
-
-const navLinks = document.querySelectorAll("nav ul a");
+    const navLinks = document.querySelectorAll(".nav-links a");
 
 
-/* ==========================
-   THEME
-========================== */
 
-const savedTheme = localStorage.getItem("theme");
+    /* =====================================================
+       01. THEME
+    ===================================================== */
 
-if(savedTheme==="dark"){
+    const savedTheme = localStorage.getItem("gayathri-theme");
 
-    body.classList.add("dark");
+    if (savedTheme === "dark") {
+        body.classList.add("dark");
+    }
 
-    themeBtn.textContent="☀";
+    updateThemeIcon();
 
-}else{
 
-    themeBtn.textContent="☾";
+    function updateThemeIcon() {
 
-}
+        if (!themeToggle) return;
 
-themeBtn.addEventListener("click",()=>{
-
-    body.classList.toggle("dark");
-
-    if(body.classList.contains("dark")){
-
-        themeBtn.textContent="☀";
-
-        localStorage.setItem("theme","dark");
-
-    }else{
-
-        themeBtn.textContent="☾";
-
-        localStorage.setItem("theme","light");
+        themeToggle.textContent =
+            body.classList.contains("dark")
+                ? "☀"
+                : "☾";
 
     }
 
-});
+
+    if (themeToggle) {
+
+        themeToggle.addEventListener("click", () => {
+
+            body.classList.toggle("dark");
+
+            const theme =
+                body.classList.contains("dark")
+                    ? "dark"
+                    : "light";
+
+            localStorage.setItem(
+                "gayathri-theme",
+                theme
+            );
+
+            updateThemeIcon();
+
+        });
+
+    }
 
 
-/* ==========================
-   HERO TYPING EFFECT
-========================== */
 
-const roles=[
+    /* =====================================================
+       02. SCROLL PROGRESS
+    ===================================================== */
 
-"Mechanical Engineer",
+    function updateScrollProgress() {
 
-"CAD Designer",
+        const scrollTop =
+            window.scrollY;
 
-"Builder",
+        const documentHeight =
+            document.documentElement.scrollHeight
+            - window.innerHeight;
 
-"Problem Solver",
+        const progress =
+            documentHeight > 0
+                ? (scrollTop / documentHeight) * 100
+                : 0;
 
-"Engineering Leader"
+        if (progressBar) {
+            progressBar.style.width =
+                `${progress}%`;
+        }
 
-];
+    }
 
-const roleElement=document.getElementById("changing-role");
+    window.addEventListener(
+        "scroll",
+        updateScrollProgress,
+        { passive: true }
+    );
 
-let roleIndex=0;
+    updateScrollProgress();
 
-let charIndex=0;
 
-let deleting=false;
 
-function typeRole(){
+    /* =====================================================
+       03. HEADER SCROLL EFFECT
+    ===================================================== */
 
-    const current=roles[roleIndex];
+    function updateHeader() {
 
-    if(!deleting){
+        if (!header) return;
 
-        roleElement.textContent=current.substring(0,charIndex+1)+"|";
+        if (window.scrollY > 40) {
 
-        charIndex++;
+            header.classList.add("scrolled");
 
-        if(charIndex===current.length){
+        } else {
 
-            deleting=true;
+            header.classList.remove("scrolled");
 
-            setTimeout(typeRole,1200);
+        }
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        { passive: true }
+    );
+
+    updateHeader();
+
+
+
+    /* =====================================================
+       04. CURSOR SPOTLIGHT
+    ===================================================== */
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let spotlightX = mouseX;
+    let spotlightY = mouseY;
+
+
+    function animateSpotlight() {
+
+        spotlightX +=
+            (mouseX - spotlightX) * 0.12;
+
+        spotlightY +=
+            (mouseY - spotlightY) * 0.12;
+
+
+        if (spotlight) {
+
+            spotlight.style.left =
+                `${spotlightX}px`;
+
+            spotlight.style.top =
+                `${spotlightY}px`;
+
+        }
+
+
+        if (cursorLabel) {
+
+            cursorLabel.style.left =
+                `${mouseX}px`;
+
+            cursorLabel.style.top =
+                `${mouseY}px`;
+
+        }
+
+
+        requestAnimationFrame(
+            animateSpotlight
+        );
+
+    }
+
+    animateSpotlight();
+
+
+    document.addEventListener(
+        "mousemove",
+        (event) => {
+
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+        },
+        { passive: true }
+    );
+
+
+
+    /* =====================================================
+       05. INTERACTIVE CURSOR
+    ===================================================== */
+
+    cards.forEach(card => {
+
+        card.addEventListener(
+            "mouseenter",
+            () => {
+
+                if (
+                    window.matchMedia(
+                        "(pointer: fine)"
+                    ).matches
+                ) {
+
+                    cursorLabel?.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                cursorLabel?.classList.remove(
+                    "visible"
+                );
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       06. PROJECT / CLUB / EXPERIENCE
+           MOUSE POSITION
+    ===================================================== */
+
+    cards.forEach(card => {
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+                const percentX =
+                    (x / rect.width) * 100;
+
+                const percentY =
+                    (y / rect.height) * 100;
+
+
+                card.style.setProperty(
+                    "--mouse-x",
+                    `${percentX}%`
+                );
+
+                card.style.setProperty(
+                    "--mouse-y",
+                    `${percentY}%`
+                );
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       07. 3D CARD TILT
+    ===================================================== */
+
+    const tiltCards =
+        document.querySelectorAll(
+            ".project-item, .club-card"
+        );
+
+
+    tiltCards.forEach(card => {
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                if (
+                    !window.matchMedia(
+                        "(pointer: fine)"
+                    ).matches
+                ) {
+                    return;
+                }
+
+
+                const rect =
+                    card.getBoundingClientRect();
+
+                const x =
+                    event.clientX - rect.left;
+
+                const y =
+                    event.clientY - rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const rotateY =
+                    ((x - centerX) / centerX) * 4;
+
+                const rotateX =
+                    ((centerY - y) / centerY) * 4;
+
+
+                card.style.transform =
+                    `perspective(1000px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-7px)
+                     scale(1.01)`;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform = "";
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       08. DETAIL PANELS
+    ===================================================== */
+
+    function openPanel(id) {
+
+        if (!id) return;
+
+
+        const panel =
+            document.getElementById(
+                `modal-${id}`
+            );
+
+        if (!panel) {
+
+            console.warn(
+                `No detail panel found for: ${id}`
+            );
 
             return;
 
         }
 
-    }else{
 
-        roleElement.textContent=current.substring(0,charIndex-1)+"|";
+        panels.forEach(item => {
 
-        charIndex--;
+            item.classList.remove(
+                "active"
+            );
 
-        if(charIndex===0){
+            item.setAttribute(
+                "aria-hidden",
+                "true"
+            );
 
-            deleting=false;
-
-            roleIndex++;
-
-            if(roleIndex>=roles.length){
-
-                roleIndex=0;
-
-            }
-
-        }
-
-    }
-
-    setTimeout(typeRole,deleting?45:90);
-
-}
-
-typeRole();
+        });
 
 
-/* ==========================
-   SPOTLIGHT
-========================== */
+        panel.classList.add(
+            "active"
+        );
 
-document.addEventListener("mousemove",(e)=>{
-
-    spotlight.animate({
-
-        left:e.clientX+"px",
-
-        top:e.clientY+"px"
-
-    },{
-
-        duration:250,
-
-        fill:"forwards"
-
-    });
-
-});
+        panel.setAttribute(
+            "aria-hidden",
+            "false"
+        );
 
 
-/* ==========================
-   SCROLL PROGRESS
-========================== */
-
-window.addEventListener("scroll",()=>{
-
-    const scrollTop=document.documentElement.scrollTop;
-
-    const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-
-    const percent=(scrollTop/height)*100;
-
-    progressBar.style.width=percent+"%";
-
-});
+        overlay?.classList.add(
+            "active"
+        );
 
 
-/* ==========================
-   GLASS NAVBAR
-========================== */
-
-window.addEventListener("scroll",()=>{
-
-    if(window.scrollY>80){
-
-        header.classList.add("scrolled");
-
-    }else{
-
-        header.classList.remove("scrolled");
-
-    }
-
-});
+        body.classList.add(
+            "modal-open"
+        );
 
 
-/* ==========================
-   SMOOTH SCROLL
-========================== */
+        document
+            .querySelectorAll(".interactive-card")
+            .forEach(item => {
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-
-    anchor.addEventListener("click",function(e){
-
-        e.preventDefault();
-
-        const target=document.querySelector(this.getAttribute("href"));
-
-        if(target){
-
-            target.scrollIntoView({
-
-                behavior:"smooth"
+                item.classList.remove(
+                    "selected"
+                );
 
             });
 
-        }
 
-    });
+        document
+            .querySelector(
+                `[data-modal="${id}"]`
+            )
+            ?.classList.add(
+                "selected"
+            );
 
-});
+    }
 
 
-/* ==========================
-   ACTIVE NAVIGATION
-========================== */
+    function closePanels() {
 
-window.addEventListener("scroll",()=>{
+        panels.forEach(panel => {
 
-    let current="";
+            panel.classList.remove(
+                "active"
+            );
 
-    sections.forEach(section=>{
-
-        const top=section.offsetTop-180;
-
-        if(window.scrollY>=top){
-
-            current=section.id;
-
-        }
-
-    });
-
-    navLinks.forEach(link=>{
-
-        link.classList.remove("active");
-
-        if(link.getAttribute("href")==="#"+current){
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-});
-
-
-/* ==========================
-   SCROLL REVEAL
-========================== */
-
-const observer=new IntersectionObserver((entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-
-        }
-
-    });
-
-},{
-    threshold:.15
-});
-
-sections.forEach(section=>{
-
-    section.classList.add("hidden");
-
-    observer.observe(section);
-
-});
-
-
-/* ==========================
-   PAGE LOADED
-========================== */
-
-window.addEventListener("load",()=>{
-
-    document.body.classList.add("loaded");
-
-});
-
-
-console.log("%cPortfolio Loaded 🚀",
-"color:#7C3AED;font-size:16px;font-weight:bold;");
-
-/* ==========================================
-   PART 2
-   PREMIUM CARD INTERACTIONS
-========================================== */
-
-const cards = document.querySelectorAll(".project-card, .journey-card");
-
-/* ==========================================
-   3D TILT + GLOW
-========================================== */
-
-cards.forEach(card => {
-
-    const title = card.querySelector("h3");
-    const text = card.querySelector("p");
-    const button = card.querySelector("button");
-
-    card.addEventListener("mousemove", e => {
-
-        const rect = card.getBoundingClientRect();
-
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = (centerY - y) / 12;
-        const rotateY = (x - centerX) / 12;
-
-        card.style.transform = `
-        perspective(1200px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        scale(1.04)
-        `;
-
-        card.style.setProperty("--x", x + "px");
-        card.style.setProperty("--y", y + "px");
-
-        if(title){
-
-            title.style.transform =
-            "translateZ(50px)";
-
-        }
-
-        if(text){
-
-            text.style.transform =
-            "translateZ(30px)";
-
-        }
-
-        if(button){
-
-            button.style.transform =
-            "translateZ(60px) translateX(10px)";
-
-        }
-
-    });
-
-    card.addEventListener("mouseleave", () => {
-
-        card.style.transform = `
-        perspective(1200px)
-        rotateX(0deg)
-        rotateY(0deg)
-        scale(1)
-        `;
-
-        if(title){
-
-            title.style.transform = "";
-
-        }
-
-        if(text){
-
-            text.style.transform = "";
-
-        }
-
-        if(button){
-
-            button.style.transform = "";
-
-        }
-
-    });
-
-});
-
-
-/* ==========================================
-   FLOAT ANIMATION
-========================================== */
-
-cards.forEach(card => {
-
-    let direction = 1;
-
-    setInterval(() => {
-
-        if(card.matches(":hover")) return;
-
-        direction *= -1;
-
-        card.animate([
-
-            {
-                transform:`translateY(${direction*3}px)`
-            },
-
-            {
-                transform:`translateY(${direction*-3}px)`
-            }
-
-        ],{
-
-            duration:4000,
-
-            fill:"forwards"
+            panel.setAttribute(
+                "aria-hidden",
+                "true"
+            );
 
         });
 
-    },4000);
 
-});
-
-
-/* ==========================================
-   MAGNETIC BUTTONS
-========================================== */
-
-const buttons = document.querySelectorAll(
-
-".hero-buttons a,.contact-links a"
-
-);
-
-buttons.forEach(button => {
-
-    button.addEventListener("mousemove", e => {
-
-        const rect = button.getBoundingClientRect();
-
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const moveX = (x - rect.width/2)/6;
-        const moveY = (y - rect.height/2)/6;
-
-        button.style.transform =
-
-        `translate(${moveX}px,${moveY}px)`;
-
-    });
-
-    button.addEventListener("mouseleave", () => {
-
-        button.style.transform = "";
-
-    });
-
-});
-
-
-/* ==========================================
-   RIPPLE EFFECT
-========================================== */
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", function(e){
-
-        const ripple = document.createElement("span");
-
-        ripple.classList.add("ripple");
-
-        const rect = this.getBoundingClientRect();
-
-        ripple.style.left =
-        e.clientX - rect.left + "px";
-
-        ripple.style.top =
-        e.clientY - rect.top + "px";
-
-        this.appendChild(ripple);
-
-        setTimeout(()=>{
-
-            ripple.remove();
-
-        },700);
-
-    });
-
-});
-
-
-/* ==========================================
-   CHIP INTERACTION
-========================================== */
-
-const chips=document.querySelectorAll(".chip");
-
-chips.forEach(chip=>{
-
-    chip.addEventListener("mousemove",e=>{
-
-        const rect=chip.getBoundingClientRect();
-
-        chip.style.setProperty(
-
-        "--x",
-
-        (e.clientX-rect.left)+"px"
-
+        overlay?.classList.remove(
+            "active"
         );
 
-        chip.style.setProperty(
 
-        "--y",
+        body.classList.remove(
+            "modal-open"
+        );
 
-        (e.clientY-rect.top)+"px"
 
+        document
+            .querySelectorAll(".interactive-card")
+            .forEach(card => {
+
+                card.classList.remove(
+                    "selected"
+                );
+
+            });
+
+    }
+
+
+
+    /* =====================================================
+       09. CARD CLICK
+    ===================================================== */
+
+    cards.forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                const id =
+                    card.dataset.modal;
+
+                openPanel(id);
+
+            }
         );
 
     });
 
-});
 
 
-/* ==========================================
-   PROJECT CARD GLOW
-========================================== */
+    /* =====================================================
+       10. CLOSE BUTTONS
+    ===================================================== */
 
-const projects=document.querySelectorAll(".project-card");
+    document
+        .querySelectorAll(".detail-close")
+        .forEach(button => {
 
-projects.forEach(card=>{
+            button.addEventListener(
+                "click",
+                closePanels
+            );
 
-    card.addEventListener("mouseenter",()=>{
+        });
 
-        card.animate([
 
-            {
+    overlay?.addEventListener(
+        "click",
+        closePanels
+    );
 
-                boxShadow:
 
-                "0 0 0 rgba(124,58,237,0)"
+    document.addEventListener(
+        "keydown",
+        event => {
 
-            },
+            if (
+                event.key === "Escape"
+            ) {
 
-            {
-
-                boxShadow:
-
-                "0 25px 60px rgba(124,58,237,.25)"
+                closePanels();
 
             }
 
-        ],{
-
-            duration:350,
-
-            fill:"forwards"
-
-        });
-
-    });
-
-});
+        }
+    );
 
 
-/* ==========================================
-   CARD PARALLAX
-========================================== */
 
-document.addEventListener("mousemove",e=>{
+    /* =====================================================
+       11. PREVENT PANEL CLICK FROM CLOSING
+    ===================================================== */
 
-    const moveX=(window.innerWidth/2-e.clientX)/120;
+    panels.forEach(panel => {
 
-    const moveY=(window.innerHeight/2-e.clientY)/120;
+        panel.addEventListener(
+            "click",
+            event => {
 
-    cards.forEach(card=>{
+                event.stopPropagation();
 
-        if(card.matches(":hover")) return;
-
-        card.style.transform=
-
-        `translate(${moveX}px,${moveY}px)`;
+            }
+        );
 
     });
 
-});
 
 
-/* ==========================================
-   BUTTON HOVER SOUND (OPTIONAL)
-========================================== */
+    /* =====================================================
+       12. ROLE TEXT ANIMATION
+    ===================================================== */
 
-// const audio = new Audio("hover.mp3");
-
-// buttons.forEach(btn=>{
-
-// btn.addEventListener("mouseenter",()=>{
-
-// audio.currentTime=0;
-
-// audio.play();
-
-// });
-
-// });
+    const roleElement =
+        document.getElementById(
+            "changing-role"
+        );
 
 
-console.log("%cPremium Interactions Loaded",
-"color:#A855F7;font-size:15px;font-weight:bold;");
-/* ==========================================
-   PART 3
-   DRAWER + MODALS
-========================================== */
+    const roles = [
 
-const overlay = document.querySelector(".overlay");
+        "Mechanical Engineer",
 
-const modals = document.querySelectorAll(".modal");
+        "CAD & Design Enthusiast",
 
-const journeyCards = document.querySelectorAll(".journey-card");
+        "Engineering Explorer",
 
-const projectCards = document.querySelectorAll(".project-card");
+        "Product Design Enthusiast",
 
-const allCards = [...journeyCards,...projectCards];
+        "Innovation Builder"
+
+    ];
 
 
-/* ==========================================
-   OPEN DRAWER
-========================================== */
-
-allCards.forEach(card=>{
-
-    card.addEventListener("click",()=>{
-
-        const target = card.dataset.modal;
-
-        const modal = document.getElementById(target);
-
-        if(!modal) return;
-
-        overlay.classList.add("active");
-
-        modal.classList.add("active");
-
-        body.classList.add("modal-open");
-
-        card.classList.add("selected");
-
-    });
-
-});
+    let roleIndex = 0;
 
 
-/* ==========================================
-   CLOSE DRAWER
-========================================== */
+    if (roleElement) {
 
-function closeModal(){
+        setInterval(() => {
 
-    overlay.classList.remove("active");
-
-    modals.forEach(modal=>{
-
-        modal.classList.remove("active");
-
-    });
-
-    body.classList.remove("modal-open");
-
-    allCards.forEach(card=>{
-
-        card.classList.remove("selected");
-
-    });
-
-}
+            roleElement.style.opacity = "0";
+            roleElement.style.transform =
+                "translateY(6px)";
 
 
-/* ==========================================
-   CLOSE BUTTON
-========================================== */
+            setTimeout(() => {
 
-document.querySelectorAll(".close").forEach(btn=>{
-
-    btn.addEventListener("click",closeModal);
-
-});
+                roleIndex =
+                    (roleIndex + 1)
+                    % roles.length;
 
 
-/* ==========================================
-   CLICK OUTSIDE
-========================================== */
-
-overlay.addEventListener("click",closeModal);
+                roleElement.textContent =
+                    roles[roleIndex];
 
 
-/* ==========================================
-   ESC KEY
-========================================== */
+                roleElement.style.opacity =
+                    "1";
 
-document.addEventListener("keydown",e=>{
+                roleElement.style.transform =
+                    "translateY(0)";
 
-    if(e.key==="Escape"){
+            }, 300);
 
-        closeModal();
+        }, 3000);
+
+
+        roleElement.style.transition =
+            "opacity .3s ease, transform .3s ease";
 
     }
 
-});
 
 
-/* ==========================================
-   PREVENT PROPAGATION
-========================================== */
+    /* =====================================================
+       13. MAGNETIC LINKS
+    ===================================================== */
 
-modals.forEach(modal=>{
+    const magneticLinks =
+        document.querySelectorAll(
+            ".magnetic-link"
+        );
 
-    modal.addEventListener("click",e=>{
 
-        e.stopPropagation();
+    magneticLinks.forEach(link => {
+
+        link.addEventListener(
+            "mousemove",
+            event => {
+
+                if (
+                    !window.matchMedia(
+                        "(pointer: fine)"
+                    ).matches
+                ) {
+                    return;
+                }
+
+
+                const rect =
+                    link.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX
+                    - rect.left
+                    - rect.width / 2;
+
+
+                const y =
+                    event.clientY
+                    - rect.top
+                    - rect.height / 2;
+
+
+                link.style.transform =
+                    `translate(
+                        ${x * 0.15}px,
+                        ${y * 0.15}px
+                    )`;
+
+            }
+        );
+
+
+        link.addEventListener(
+            "mouseleave",
+            () => {
+
+                link.style.transform =
+                    "";
+
+            }
+        );
 
     });
 
-});
 
 
-/* ==========================================
-   DRAWER ANIMATION
-========================================== */
+    /* =====================================================
+       14. SCROLL REVEAL
+    ===================================================== */
 
-modals.forEach(modal=>{
+    const revealElements =
+        document.querySelectorAll(
+            ".section-intro, \
+             .experience-item, \
+             .project-item, \
+             .club-card, \
+             .about-grid, \
+             .interest-list, \
+             .contact-inner"
+        );
 
-    modal.addEventListener("transitionend",()=>{
 
-        modal.style.willChange="auto";
+    revealElements.forEach(
+        element => {
 
-    });
+            element.style.opacity = "0";
 
-});
+            element.style.transform =
+                "translateY(35px)";
 
-
-/* ==========================================
-   STICKY ACTIVE CARD
-========================================== */
-
-allCards.forEach(card=>{
-
-    card.addEventListener("click",()=>{
-
-        allCards.forEach(c=>{
-
-            c.classList.remove("selected");
-
-        });
-
-        card.classList.add("selected");
-
-    });
-
-});
-
-
-/* ==========================================
-   SCROLL INSIDE MODAL
-========================================== */
-
-modals.forEach(modal=>{
-
-    modal.addEventListener("wheel",e=>{
-
-        e.stopPropagation();
-
-    });
-
-});
-
-
-/* ==========================================
-   PRELOAD IMAGES
-========================================== */
-
-const images=document.querySelectorAll("img");
-
-images.forEach(img=>{
-
-    const preload=new Image();
-
-    preload.src=img.src;
-
-});
-
-
-/* ==========================================
-   NAVBAR SHADOW
-========================================== */
-
-window.addEventListener("scroll",()=>{
-
-    if(window.scrollY>250){
-
-        header.style.boxShadow=
-
-        "0 10px 35px rgba(0,0,0,.08)";
-
-    }
-
-    else{
-
-        header.style.boxShadow="none";
-
-    }
-
-});
-
-
-/* ==========================================
-   HERO FADE
-========================================== */
-
-window.addEventListener("scroll",()=>{
-
-    const hero=document.querySelector("#hero");
-
-    const offset=window.scrollY;
-
-    hero.style.opacity=
-
-    1-offset/900;
-
-});
-
-
-/* ==========================================
-   RANDOM CHIP ANIMATION
-========================================== */
-
-const chips=document.querySelectorAll(".chip");
-
-setInterval(()=>{
-
-    const random=
-
-    chips[Math.floor(Math.random()*chips.length)];
-
-    random.animate([
-
-        {
-
-            transform:"translateY(0px)"
-
-        },
-
-        {
-
-            transform:"translateY(-8px)"
-
-        },
-
-        {
-
-            transform:"translateY(0px)"
+            element.style.transition =
+                "opacity .8s ease, \
+                 transform .8s cubic-bezier(.22,.61,.36,1)";
 
         }
-
-    ],{
-
-        duration:700
-
-    });
-
-},1800);
+    );
 
 
-/* ==========================================
-   LOGO HOVER
-========================================== */
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
 
-const logo=document.querySelector(".logo");
+                entries.forEach(
+                    entry => {
 
-logo.addEventListener("mouseenter",()=>{
+                        if (
+                            !entry.isIntersecting
+                        ) {
+                            return;
+                        }
 
-    logo.animate([
 
-        {
+                        entry.target.style.opacity =
+                            "1";
 
-            letterSpacing:"0px"
+                        entry.target.style.transform =
+                            "translateY(0)";
 
-        },
 
-        {
+                        revealObserver.unobserve(
+                            entry.target
+                        );
 
-            letterSpacing:"1px"
+                    }
+                );
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach(
+        element => {
+
+            revealObserver.observe(
+                element
+            );
 
         }
-
-    ],{
-
-        duration:300,
-
-        fill:"forwards"
-
-    });
-
-});
+    );
 
 
-/* ==========================================
-   SCROLL TO TOP
-========================================== */
 
-window.addEventListener("keydown",e=>{
+    /* =====================================================
+       15. ACTIVE NAVIGATION
+    ===================================================== */
 
-    if(e.key==="Home"){
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
+        );
 
-        window.scrollTo({
 
-            top:0,
+    const sectionObserver =
+        new IntersectionObserver(
+            entries => {
 
-            behavior:"smooth"
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            !entry.isIntersecting
+                        ) {
+                            return;
+                        }
+
+
+                        navLinks.forEach(
+                            link => {
+
+                                link.classList.remove(
+                                    "active"
+                                );
+
+                                const href =
+                                    link.getAttribute(
+                                        "href"
+                                    );
+
+
+                                if (
+                                    href ===
+                                    `#${entry.target.id}`
+                                ) {
+
+                                    link.classList.add(
+                                        "active"
+                                    );
+
+                                }
+
+                            }
+                        );
+
+                    }
+                );
+
+            },
+            {
+                threshold: 0.35
+            }
+        );
+
+
+    sections.forEach(
+        section => {
+
+            sectionObserver.observe(
+                section
+            );
+
+        }
+    );
+
+
+
+    /* =====================================================
+       16. SMOOTH ANCHOR NAVIGATION
+    ===================================================== */
+
+    document
+        .querySelectorAll(
+            'a[href^="#"]'
+        )
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const targetID =
+                        link.getAttribute(
+                            "href"
+                        );
+
+
+                    if (
+                        targetID === "#"
+                    ) {
+                        return;
+                    }
+
+
+                    const target =
+                        document.querySelector(
+                            targetID
+                        );
+
+
+                    if (!target) {
+                        return;
+                    }
+
+
+                    event.preventDefault();
+
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
 
         });
 
+
+
+    /* =====================================================
+       17. CARD OPEN LABEL
+    ===================================================== */
+
+    cards.forEach(card => {
+
+        card.addEventListener(
+            "mouseenter",
+            () => {
+
+                if (cursorLabel) {
+
+                    cursorLabel.querySelector(
+                        "span"
+                    ).textContent = "OPEN";
+
+                }
+
+            }
+        );
+
+    });
+
+
+
+    /* =====================================================
+       18. REDUCED MOTION SUPPORT
+    ===================================================== */
+
+    const reducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+
+    if (reducedMotion.matches) {
+
+        document
+            .querySelectorAll("*")
+            .forEach(element => {
+
+                element.style.scrollBehavior =
+                    "auto";
+
+            });
+
     }
 
-});
 
 
-/* ==========================================
-   PERFORMANCE
-========================================== */
+    /* =====================================================
+       19. INITIAL LOAD
+    ===================================================== */
 
-window.addEventListener("blur",()=>{
+    window.dispatchEvent(
+        new Event("scroll")
+    );
 
-    document.body.style.pointerEvents="none";
 
-});
-
-window.addEventListener("focus",()=>{
-
-    document.body.style.pointerEvents="auto";
+    console.log(
+        "Gayathri portfolio initialized."
+    );
 
 });
-
-
-/* ==========================================
-   CONSOLE MESSAGE
-========================================== */
-
-console.log(
-"%cDesigned & Developed by Gayathri J. Pisharady",
-"font-size:18px;color:#7C3AED;font-weight:bold;"
-);
-
-console.log(
-"%cPortfolio Version 2",
-"font-size:14px;color:#A78BFA;"
-);
