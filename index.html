@@ -8,10 +8,7 @@
     <title>Gayathri J. Pisharady</title>
 
     <meta name="description"
-        content="Mechanical Engineering Student | CAD Designer | Product Builder | Engineering Portfolio">
-
-    <meta name="keywords"
-        content="Gayathri J Pisharady, Mechanical Engineering, CAD, Formula Kart, IEEE IAS, Portfolio">
+        content="Gayathri J. Pisharady, Mechanical Engineering student interested in CAD, product design, manufacturing, automation and engineering leadership.">
 
     <meta name="author" content="Gayathri J. Pisharady">
 
@@ -21,108 +18,139 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
+
+    <!-- ==========================================
+         GLOBAL UI
+    =========================================== -->
 
     <div id="progress-bar"></div>
 
     <div id="spotlight"></div>
 
-    <header>
+    <div id="cursor-label">
+        <span>OPEN</span>
+    </div>
+
+
+    <!-- ==========================================
+         NAVIGATION
+    =========================================== -->
+
+    <header id="site-header">
 
         <nav>
 
-            <a href="#" class="logo">
-                Gayathri J. Pisharady
+            <a href="#home" class="logo">
+                Gayathri.
             </a>
 
-            <ul>
+            <div class="nav-links">
 
-                <li>
-                    <a href="#about">About</a>
-                </li>
+                <a href="#work">01 Work</a>
 
-                <li>
-                    <a href="#work">Work</a>
-                </li>
+                <a href="#projects">02 Projects</a>
 
-                <li>
-                    <a href="#journey">Journey</a>
-                </li>
+                <a href="#clubs">03 Clubs</a>
 
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
+                <a href="#about">04 About</a>
 
-            </ul>
+                <a href="#contact">05 Contact</a>
 
-            <button id="theme-toggle">
+            </div>
+
+            <button
+                id="theme-toggle"
+                aria-label="Toggle light and dark mode">
+
                 ☾
+
             </button>
 
         </nav>
 
     </header>
 
+
+
     <main>
 
-        <section id="hero">
 
-            <div class="hero-container">
+        <!-- ==========================================
+             HOME
+        =========================================== -->
 
-                <div class="hero-text">
+        <section id="home" class="hero">
 
-                    <p class="hero-label">
-                        Mechanical Engineer
-                    </p>
+            <div class="hero-inner">
 
-                    <h1>
+                <p class="eyebrow">
+                    MECHANICAL ENGINEERING · INDIA
+                </p>
 
-                        GAYATHRI
+                <h1 class="hero-title">
 
-                        <span>J.</span>
+                    GAYATHRI
 
-                        PISHARADY
+                    <span>J. PISHARADY</span>
 
-                    </h1>
+                </h1>
 
-                    <h2 id="changing-role">
+                <div class="hero-bottom">
 
-                        Designer
+                    <div>
 
-                    </h2>
+                        <p class="hero-role">
+                            <span id="changing-role">
+                                Mechanical Engineer
+                            </span>
+                        </p>
 
-                    <p class="hero-description">
+                        <p class="hero-description">
 
-                        Building practical engineering solutions through design,
-                        automation and leadership.
+                            Exploring engineering through
+                            CAD, product design, manufacturing
+                            and innovation.
 
-                    </p>
+                        </p>
 
-                    <div class="hero-buttons">
+                    </div>
 
-                        <a href="resume.pdf" class="primary">
+
+                    <div class="hero-links">
+
+                        <a href="resume.pdf"
+                           class="magnetic-link">
 
                             Resume
+                            <span>↗</span>
 
                         </a>
 
-                        <a href="https://github.com/YOUR_USERNAME"
-                            target="_blank">
+                        <a href="https://github.com/GayathriJPisharady"
+                           target="_blank"
+                           rel="noopener"
+                           class="magnetic-link">
 
                             GitHub
+                            <span>↗</span>
 
                         </a>
 
-                        <a href="https://linkedin.com/in/YOUR_PROFILE"
-                            target="_blank">
+                        <a href="https://www.linkedin.com/"
+                           target="_blank"
+                           rel="noopener"
+                           class="magnetic-link">
 
                             LinkedIn
+                            <span>↗</span>
 
                         </a>
 
@@ -132,11 +160,130 @@
 
             </div>
 
-            <div class="scroll-down">
 
-                <span></span>
+            <a href="#work" class="scroll-indicator">
 
-                Explore
+                <span>SCROLL</span>
+
+                <span class="scroll-line"></span>
+
+            </a>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             WORK EXPERIENCE
+        =========================================== -->
+
+        <section id="work" class="content-section">
+
+            <div class="section-intro">
+
+                <span class="section-number">01</span>
+
+                <div>
+
+                    <p class="section-kicker">
+                        WORK EXPERIENCE
+                    </p>
+
+                    <h2>
+                        Where I've worked.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="experience-list">
+
+
+                <!-- CIPET -->
+
+                <article
+                    class="experience-item interactive-card"
+                    data-modal="cipet">
+
+                    <div class="experience-index">
+                        01
+                    </div>
+
+                    <div class="experience-main">
+
+                        <p class="experience-year">
+                            2025
+                        </p>
+
+                        <h3>
+                            Industrial Training Intern
+                        </h3>
+
+                        <p class="experience-company">
+                            CIPET
+                        </p>
+
+                    </div>
+
+                    <div class="experience-summary">
+
+                        <p>
+                            Polymer Processing · Manufacturing
+                            · Industrial Training
+                        </p>
+
+                        <span class="open-arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- TECHFUNIC -->
+
+                <article
+                    class="experience-item interactive-card"
+                    data-modal="techfunic">
+
+                    <div class="experience-index">
+                        02
+                    </div>
+
+                    <div class="experience-main">
+
+                        <p class="experience-year">
+                            2025
+                        </p>
+
+                        <h3>
+                            Operations Intern
+                        </h3>
+
+                        <p class="experience-company">
+                            Techfunic
+                        </p>
+
+                    </div>
+
+                    <div class="experience-summary">
+
+                        <p>
+                            Operations · Coordination · Technical Activities
+                        </p>
+
+                        <span class="open-arrow">
+                            ↗
+                        </span>
+
+                    </div>
+
+                </article>
+
 
             </div>
 
@@ -144,986 +291,1423 @@
 
 
 
+        <!-- ==========================================
+             ENGINEERING PROJECTS
+        =========================================== -->
 
+        <section id="projects" class="content-section">
 
-        <section id="about">
+            <div class="section-intro">
 
-            <div class="section-header">
+                <span class="section-number">02</span>
 
-                <span>01</span>
+                <div>
 
-                <h2>
+                    <p class="section-kicker">
+                        ENGINEERING PROJECTS
+                    </p>
 
-                    About
+                    <h2>
+                        Things I've built.
+                    </h2>
 
-                </h2>
+                </div>
 
             </div>
 
-            <div class="about-content">
 
-                <p class="large-text">
+            <div class="project-list">
 
-                    I enjoy transforming engineering ideas into practical
-                    solutions through CAD, automation and product design.
+
+                <!-- FORMULA KART -->
+
+                <article
+                    class="project-item interactive-card"
+                    data-modal="formula">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <div class="project-info">
+
+                        <p class="project-category">
+                            VEHICLE DESIGN · CAD
+                        </p>
+
+                        <h3>
+                            Formula Kart
+                        </h3>
+
+                        <p>
+                            Student team member, Forza 1.5
+                        </p>
+
+                    </div>
+
+                    <div class="project-arrow">
+                        ↗
+                    </div>
+
+                </article>
+
+
+
+                <!-- MIG SIMULATOR -->
+
+                <article
+                    class="project-item interactive-card"
+                    data-modal="mig">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <div class="project-info">
+
+                        <p class="project-category">
+                            AUTOMATION · MOTION CONTROL
+                        </p>
+
+                        <h3>
+                            MIG Welding Torch Simulator
+                        </h3>
+
+                        <p>
+                            Arduino · Processing
+                        </p>
+
+                    </div>
+
+                    <div class="project-arrow">
+                        ↗
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             CLUBS & LEADERSHIP
+        =========================================== -->
+
+        <section id="clubs" class="content-section">
+
+            <div class="section-intro">
+
+                <span class="section-number">03</span>
+
+                <div>
+
+                    <p class="section-kicker">
+                        CLUBS & LEADERSHIP
+                    </p>
+
+                    <h2>
+                        Communities I've helped build.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="club-grid">
+
+
+                <!-- IEEE IAS -->
+
+                <article
+                    class="club-card interactive-card"
+                    data-modal="ias">
+
+                    <span class="club-year">
+                        2026
+                    </span>
+
+                    <p class="club-type">
+                        LEADERSHIP
+                    </p>
+
+                    <h3>
+                        IEEE IAS
+                    </h3>
+
+                    <p>
+                        Chair
+                    </p>
+
+                    <span class="club-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- IEDC -->
+
+                <article
+                    class="club-card interactive-card"
+                    data-modal="iedc">
+
+                    <span class="club-year">
+                        2026
+                    </span>
+
+                    <p class="club-type">
+                        INNOVATION
+                    </p>
+
+                    <h3>
+                        IEDC
+                    </h3>
+
+                    <p>
+                        Co-Lead
+                    </p>
+
+                    <span class="club-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- ARMS -->
+
+                <article
+                    class="club-card interactive-card"
+                    data-modal="arms">
+
+                    <span class="club-year">
+                        2026
+                    </span>
+
+                    <p class="club-type">
+                        DESIGN
+                    </p>
+
+                    <h3>
+                        ARMS
+                    </h3>
+
+                    <p>
+                        Design Lead
+                    </p>
+
+                    <span class="club-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- SAE -->
+
+                <article
+                    class="club-card interactive-card"
+                    data-modal="sae">
+
+                    <span class="club-year">
+                        2025
+                    </span>
+
+                    <p class="club-type">
+                        PUBLICITY
+                    </p>
+
+                    <h3>
+                        SAE
+                    </h3>
+
+                    <p>
+                        Publicity Chair
+                    </p>
+
+                    <span class="club-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+
+                <!-- ROBOTICS -->
+
+                <article
+                    class="club-card interactive-card"
+                    data-modal="robotics">
+
+                    <span class="club-year">
+                        2025
+                    </span>
+
+                    <p class="club-type">
+                        ROBOTICS
+                    </p>
+
+                    <h3>
+                        Robotics Club
+                    </h3>
+
+                    <p>
+                        Executive Committee
+                    </p>
+
+                    <span class="club-arrow">
+                        ↗
+                    </span>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             ABOUT
+        =========================================== -->
+
+        <section id="about" class="content-section about-section">
+
+            <div class="section-intro">
+
+                <span class="section-number">04</span>
+
+                <div>
+
+                    <p class="section-kicker">
+                        ABOUT
+                    </p>
+
+                    <h2>
+                        A little about me.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-grid">
+
+                <p class="about-large">
+
+                    I'm a Mechanical Engineering student
+                    interested in turning ideas into
+                    practical things.
 
                 </p>
+
+
+                <div class="about-details">
+
+                    <p>
+
+                        My interests span CAD,
+                        product design,
+                        manufacturing,
+                        automation and robotics.
+
+                    </p>
+
+                    <p>
+
+                        Alongside engineering,
+                        I enjoy working with student
+                        communities, organizing technical
+                        activities and exploring new ideas.
+
+                    </p>
+
+                    <p>
+
+                        Currently pursuing B.Tech in
+                        Mechanical Engineering at
+                        Government Engineering College
+                        Palakkad.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="interest-list">
+
+                <span>CAD</span>
+
+                <span>Product Design</span>
+
+                <span>Manufacturing</span>
+
+                <span>Automation</span>
+
+                <span>Robotics</span>
+
+                <span>Innovation</span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ==========================================
+             CONTACT
+        =========================================== -->
+
+        <section id="contact" class="contact-section">
+
+            <div class="contact-inner">
+
+                <p class="section-kicker">
+                    05 · CONTACT
+                </p>
+
+                <h2>
+
+                    Let's build
+                    something.
+
+                </h2>
+
+                <p class="contact-description">
+
+                    Open to engineering projects,
+                    internships, collaborations
+                    and interesting ideas.
+
+                </p>
+
+
+                <div class="contact-links">
+
+                    <a
+                        href="mailto:gayathrijpisharady@gmail.com"
+                        class="contact-link">
+
+                        <span>Email</span>
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                    <a
+                        href="linkedin.com/in/gayathrijpisharady/"
+                        target="_blank"
+                        rel="noopener"
+                        class="contact-link">
+
+                        <span>LinkedIn</span>
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                    <a
+                        href="https://github.com/GayathriJPisharady"
+                        target="_blank"
+                        rel="noopener"
+                        class="contact-link">
+
+                        <span>GitHub</span>
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                    <a
+                        href="resume.pdf"
+                        class="contact-link">
+
+                        <span>Resume</span>
+
+                        <span>↗</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         DETAIL PANEL OVERLAY
+    =========================================== -->
+
+    <div
+        class="detail-overlay"
+        id="detail-overlay">
+    </div>
+
+
+
+    <!-- ==========================================
+         CIPET
+    =========================================== -->
+
+    <aside
+        class="detail-panel"
+        id="modal-cipet"
+        aria-hidden="true">
+
+        <button
+            class="detail-close"
+            aria-label="Close">
+
+            ×
+
+        </button>
+
+        <div class="detail-header">
+
+            <p>
+                WORK EXPERIENCE · 2025
+            </p>
+
+            <h2>
+                Industrial Training Intern
+            </h2>
+
+            <h3>
+                CIPET
+            </h3>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
 
                 <p>
 
-                    Currently pursuing B.Tech in Mechanical Engineering at
-                    Government Engineering College Palakkad.
-
-                    My interests include engineering design,
-                    robotics,
-                    product development,
-                    manufacturing,
-                    and technical leadership.
+                    Completed a 15-day industrial
+                    training focused on plastic
+                    processing techniques,
+                    manufacturing and recycling.
 
                 </p>
 
             </div>
 
-        </section>
 
+            <div class="detail-block">
 
+                <span>Duration</span>
 
-
-
-        <section id="focus">
-
-            <div class="section-header">
-
-                <span>02</span>
-
-                <h2>
-
-                    What I'm Exploring
-
-                </h2>
+                <p>
+                    15 Days
+                </p>
 
             </div>
 
-            <div class="chip-container">
 
-                <div class="chip">
+            <div class="detail-block">
 
-                    CAD Design
+                <span>Worked With</span>
 
-                </div>
+                <ul>
 
-                <div class="chip">
+                    <li>
+                        Injection Moulding
+                    </li>
 
-                    Product Design
+                    <li>
+                        Extrusion
+                    </li>
 
-                </div>
+                    <li>
+                        Plastic Recycling
+                    </li>
 
-                <div class="chip">
+                    <li>
+                        Mould Cooling Systems
+                    </li>
 
-                    Robotics
+                    <li>
+                        Manufacturing Processes
+                    </li>
 
-                </div>
-
-                <div class="chip">
-
-                    Automation
-
-                </div>
-
-                <div class="chip">
-
-                    Manufacturing
-
-                </div>
-
-                <div class="chip">
-
-                    Engineering Leadership
-
-                </div>
-
-                <div class="chip">
-
-                    Innovation
-
-                </div>
-
-                <div class="chip">
-
-                    Industrial Design
-
-                </div>
+                </ul>
 
             </div>
 
-        </section>
 
+            <div class="detail-block">
 
+                <span>Skills Gained</span>
 
+                <ul>
 
+                    <li>
+                        Plastic Processing
+                    </li>
 
-        <section id="work">
+                    <li>
+                        Machine Operation
+                    </li>
 
-            <div class="section-header">
+                    <li>
+                        Industrial Workflow
+                    </li>
 
-                <span>03</span>
+                    <li>
+                        Manufacturing
+                    </li>
 
-                <h2>
-
-                    Engineering Work
-
-                </h2>
+                </ul>
 
             </div>
 
-            <div class="project-grid">
 
-                <div class="project-card"
-                    data-modal="formula">
+            <div class="detail-gallery">
 
-                    <span>
-
-                        01
-
-                    </span>
-
-                    <h3>
-
-                        Formula Kart Design Challenge
-
-                    </h3>
-
-                    <p>
-
-                        Vehicle Design • CAD • Documentation
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
+                <div>
+                    CIPET
                 </div>
 
-                <div class="project-card"
-                    data-modal="mig">
-
-                    <span>
-
-                        02
-
-                    </span>
-
-                    <h3>
-
-                        MIG Welding Torch Simulator
-
-                    </h3>
-
-                    <p>
-
-                        Arduino • Processing • Motion Control
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
+                <div>
+                    Training
                 </div>
 
             </div>
 
-        </section>
-        <section id="journey">
+        </div>
 
-            <div class="section-header">
+    </aside>
 
-                <span>04</span>
 
-                <h2>
 
-                    Journey
+    <!-- ==========================================
+         TECHFUNIC
+    =========================================== -->
 
-                </h2>
+    <aside
+        class="detail-panel"
+        id="modal-techfunic"
+        aria-hidden="true">
+
+        <button
+            class="detail-close"
+            aria-label="Close">
+
+            ×
+
+        </button>
+
+        <div class="detail-header">
+
+            <p>
+                WORK EXPERIENCE · 2025
+            </p>
+
+            <h2>
+                Operations Intern
+            </h2>
+
+            <h3>
+                Techfunic
+            </h3>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
+
+                <p>
+
+                    Worked as an Operations Intern,
+                    supporting coordination,
+                    technical activities and
+                    team operations.
+
+                </p>
 
             </div>
 
-            <div class="journey-grid">
 
-                <article class="journey-card" data-modal="cipet">
+            <div class="detail-block">
 
-                    <div class="card-top">
+                <span>Responsibilities</span>
 
-                        <span>202</span>
+                <ul>
 
-                        <span>Industrial Training</span>
+                    <li>
+                        Operations Coordination
+                    </li>
 
-                    </div>
+                    <li>
+                        Technical Activity Support
+                    </li>
 
-                    <h3>CIPET</h3>
+                    <li>
+                        Event Coordination
+                    </li>
 
-                    <p>
-                        Polymer Processing • Manufacturing • Injection Moulding
-                    </p>
+                    <li>
+                        Team Collaboration
+                    </li>
 
-                    <button>
-                        Explore →
-                    </button>
-
-                </article>
-
-
-
-                <article class="journey-card" data-modal="iaschair">
-
-                    <div class="card-top">
-
-                        <span>2026</span>
-
-                        <span>Leadership</span>
-
-                    </div>
-
-                    <h3>IEEE IAS Chair</h3>
-
-                    <p>
-
-                        Student Branch Chapter
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
-                </article>
-
-
-
-                <article class="journey-card" data-modal="iedc">
-
-                    <div class="card-top">
-
-                        <span>2026</span>
-
-                        <span>Innovation</span>
-
-                    </div>
-
-                    <h3>
-
-                        IEDC Co-Lead
-
-                    </h3>
-
-                    <p>
-
-                        Innovation & Entrepreneurship
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
-                </article>
-
-
-
-                <article class="journey-card" data-modal="techfunic">
-
-                    <div class="card-top">
-
-                        <span>2025</span>
-
-                        <span>Internship</span>
-
-                    </div>
-
-                    <h3>
-
-                        Techfunic
-
-                    </h3>
-
-                    <p>
-
-                        Operations Intern
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
-                </article>
-
-
-
-                <article class="journey-card" data-modal="formula">
-
-                    <div class="card-top">
-
-                        <span>2025</span>
-
-                        <span>Competition</span>
-
-                    </div>
-
-                    <h3>
-
-                        Formula Kart
-
-                    </h3>
-
-                    <p>
-
-                        Design Team Member
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
-                </article>
-
-
-
-                <article class="journey-card" data-modal="sae">
-
-                    <div class="card-top">
-
-                        <span>2025</span>
-
-                        <span>Leadership</span>
-
-                    </div>
-
-                    <h3>
-
-                        SAE
-
-                    </h3>
-
-                    <p>
-
-                        Publicity Chair
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
-                </article>
-
-
-
-                <article class="journey-card" data-modal="ARMS">
-
-                    <div class="card-top">
-
-                        <span>202</span>
-
-                        <span>Club</span>
-
-                    </div>
-
-                    <h3>
-
-                        ARMS- Mechanical association
-
-                    </h3>
-
-                    <p>
-
-                        Design lead
-
-                    </p>
-
-                    <button>
-
-                        Explore →
-
-                    </button>
-
-                </article>
+                </ul>
 
             </div>
 
-        </section>
 
+            <div class="detail-block">
 
+                <span>Skills</span>
 
+                <ul>
 
+                    <li>
+                        Communication
+                    </li>
 
-<!-- ===================================================== -->
+                    <li>
+                        Planning
+                    </li>
 
-<!-- EXPERIENCE MODALS -->
+                    <li>
+                        Coordination
+                    </li>
 
-<!-- ===================================================== -->
+                    <li>
+                        Teamwork
+                    </li>
 
-<div class="overlay"></div>
+                </ul>
 
-
-
-
-
-<div class="modal" id="cipet">
-
-<div class="close">
-
-✕
-
-</div>
-
-<h2>
-
-Industrial Training Intern
-
-</h2>
-
-<h4>
-
-CIPET
-
-</h4>
-
-<div class="modal-content">
-
-<h3>
-
-Overview
-
-</h3>
-
-<p>
-
-Completed industrial training focused on
-polymer processing, manufacturing
-techniques and industrial production.
-
-</p>
-
-<h3>
-
-Duration
-
-</h3>
-
-<p>
-
-15 Days
-
-</p>
-
-<h3>
-
-Responsibilities
-
-</h3>
-
-<ul>
-
-<li>Injection Moulding</li>
-
-<li>Extrusion</li>
-
-<li>Plastic Recycling</li>
-
-<li>Industrial Safety</li>
-
-<li>Quality Inspection</li>
-
-</ul>
-
-<h3>
-
-Skills Gained
-
-</h3>
-
-<ul>
-
-<li>Manufacturing Process</li>
-
-<li>Industrial Workflow</li>
-
-<li>Polymer Processing</li>
-
-<li>Machine Operation</li>
-
-</ul>
-
-<h3>
-
-Gallery</h3>
-
-<div class="gallery">
-
-Image Placeholder
-
-</div>
-
-<h3>
-
-Certificate
-
-</h3>
-
-<a href="#">
-
-View Certificate →
-
-</a>
-
-</div>
-
-</div>
-
-
-
-
-
-<div class="modal" id="techfunic">
-
-<div class="close">
-
-✕
-
-</div>
-
-<h2>
-
-Operations Intern
-
-</h2>
-
-<h4>
-
-Techfunic
-
-</h4>
-
-<div class="modal-content">
-
-<h3>
-
-Overview
-
-</h3>
-
-<p>
-
-Worked with the operations team in planning,
-coordination and execution of technical
-activities.
-
-</p>
-
-<h3>
-
-Responsibilities
-
-</h3>
-
-<ul>
-
-<li>Workshop Coordination</li>
-
-<li>Content Planning</li>
-
-<li>Operations Support</li>
-
-<li>Team Collaboration</li>
-
-</ul>
-
-<h3>
-
-Skills
-
-</h3>
-
-<ul>
-
-<li>Communication</li>
-
-<li>Management</li>
-
-<li>Planning</li>
-
-<li>Leadership</li>
-
-</ul>
-
-<h3>
-
-Gallery</h3>
-
-<div class="gallery">
-
-Image Placeholder
-
-</div>
-
-</div>
-
-</div>
-<div class="modal" id="formula">
-
-    <div class="close">✕</div>
-
-    <h2>Formula Kart Design Challenge</h2>
-
-    <h4>Student Team Member</h4>
-
-    <div class="modal-content">
-
-        <h3>Overview</h3>
-
-        <p>
-            Worked as a student team member in Team Forza 1.5,
-            contributing to the vehicle design process for the Formula
-            Kart Design Challenge.
-        </p>
-
-        <h3>Responsibilities</h3>
-
-        <ul>
-
-            <li>Vehicle Design</li>
-
-            <li>CAD Modelling</li>
-
-            <li>Engineering Documentation</li>
-
-            <li>Research & Design Validation</li>
-
-            <li>Team Collaboration</li>
-
-        </ul>
-
-        <h3>Software & Tools</h3>
-
-        <ul>
-
-            <li>Fusion 360</li>
-
-            <li>SolidWorks</li>
-
-            <li>AutoCAD</li>
-
-        </ul>
-
-        <h3>Gallery</h3>
-
-        <div class="gallery">
-
-            Formula Kart Images
+            </div>
 
         </div>
 
-    </div>
-
-</div>
+    </aside>
 
 
 
+    <!-- ==========================================
+         FORMULA KART
+    =========================================== -->
 
+    <aside
+        class="detail-panel"
+        id="modal-formula"
+        aria-hidden="true">
 
-<div class="modal" id="iaschair">
+        <button
+            class="detail-close"
+            aria-label="Close">
 
-    <div class="close">✕</div>
+            ×
 
-    <h2>IEEE IAS Chair</h2>
+        </button>
 
-    <h4>IEEE IAS SBC GEC Palakkad</h4>
+        <div class="detail-header">
 
-    <div class="modal-content">
+            <p>
+                ENGINEERING PROJECT · 2025
+            </p>
 
-        <h3>Overview</h3>
+            <h2>
+                Formula Kart
+            </h2>
 
-        <p>
-
-            Leading the IEEE Industry Applications Society Student
-            Branch Chapter by organizing technical activities and
-            strengthening student engagement.
-
-        </p>
-
-        <h3>Responsibilities</h3>
-
-        <ul>
-
-            <li>Lead Executive Committee</li>
-
-            <li>Organize Technical Events</li>
-
-            <li>Industry Collaboration</li>
-
-            <li>Workshop Planning</li>
-
-            <li>Volunteer Coordination</li>
-
-        </ul>
-
-        <h3>Achievements</h3>
-
-        <ul>
-
-            <li>Conducted Workshops</li>
-
-            <li>Technical Sessions</li>
-
-            <li>Student Community Building</li>
-
-        </ul>
-
-        <h3>Gallery</h3>
-
-        <div class="gallery">
-
-            IEEE IAS Images
+            <h3>
+                Forza 1.5 · Student Team Member
+            </h3>
 
         </div>
 
-    </div>
 
-</div>
+        <div class="detail-content">
 
+            <div class="detail-block">
 
+                <span>Overview</span>
 
+                <p>
 
+                    Contributed to the design and
+                    development of a Formula Kart
+                    as part of Team Forza 1.5.
 
-<div class="modal" id="iedc">
+                </p>
 
-    <div class="close">✕</div>
-
-    <h2>IEDC Co-Lead</h2>
-
-    <h4>Innovation & Entrepreneurship Development Centre</h4>
-
-    <div class="modal-content">
-
-        <h3>Overview</h3>
-
-        <p>
-
-            Supporting innovation initiatives,
-            entrepreneurship programs,
-            startup activities and technical events.
-
-        </p>
-
-        <h3>Responsibilities</h3>
-
-        <ul>
-
-            <li>Innovation Programs</li>
-
-            <li>Startup Events</li>
-
-            <li>Team Coordination</li>
-
-            <li>Student Mentoring</li>
-
-        </ul>
-
-        <h3>Gallery</h3>
-
-        <div class="gallery">
-
-            IEDC Images
-
-        </div>
-
-    </div>
-
-</div>
+            </div>
 
 
+            <div class="detail-block">
+
+                <span>Role</span>
+
+                <p>
+
+                    Student Team Member
+
+                </p>
+
+            </div>
 
 
+            <div class="detail-block">
 
-<div class="modal" id="sae">
+                <span>Worked On</span>
 
-    <div class="close">✕</div>
+                <ul>
 
-    <h2>SAE Publicity Chair</h2>
+                    <li>
+                        Vehicle Design
+                    </li>
 
-    <h4>SAE Collegiate Club</h4>
+                    <li>
+                        CAD Modelling
+                    </li>
 
-    <div class="modal-content">
+                    <li>
+                        Engineering Documentation
+                    </li>
 
-        <h3>Overview</h3>
+                    <li>
+                        Design Research
+                    </li>
 
-        <p>
+                    <li>
+                        Team Collaboration
+                    </li>
 
-            Managed publicity activities,
-            event promotions and visual branding.
+                </ul>
 
-        </p>
+            </div>
 
-        <h3>Responsibilities</h3>
 
-        <ul>
+            <div class="detail-block">
 
-            <li>Poster Design</li>
+                <span>Tools</span>
 
-            <li>Social Media</li>
+                <ul>
 
-            <li>Event Promotion</li>
+                    <li>
+                        Fusion 360
+                    </li>
 
-            <li>Creative Content</li>
+                    <li>
+                        SolidWorks
+                    </li>
 
-        </ul>
+                </ul>
 
-        <div class="gallery">
+            </div>
 
-            SAE Gallery
+
+            <div class="detail-gallery">
+
+                <div>
+                    CAD
+                </div>
+
+                <div>
+                    Kart
+                </div>
+
+            </div>
 
         </div>
 
-    </div>
-
-</div>
+    </aside>
 
 
 
+    <!-- ==========================================
+         MIG SIMULATOR
+    =========================================== -->
 
+    <aside
+        class="detail-panel"
+        id="modal-mig"
+        aria-hidden="true">
 
-<div class="modal" id="robotics">
+        <button
+            class="detail-close"
+            aria-label="Close">
 
-    <div class="close">✕</div>
+            ×
 
-    <h2>Robotics Club</h2>
+        </button>
 
-    <h4>Executive Committee</h4>
+        <div class="detail-header">
 
-    <div class="modal-content">
+            <p>
+                ENGINEERING PROJECT
+            </p>
 
-        <h3>Overview</h3>
-
-        <p>
-
-            Worked with the Robotics Club Executive Committee in
-            planning technical activities and promoting robotics.
-
-        </p>
-
-        <h3>Responsibilities</h3>
-
-        <ul>
-
-            <li>Event Planning</li>
-
-            <li>Team Coordination</li>
-
-            <li>Technical Workshops</li>
-
-            <li>Student Engagement</li>
-
-        </ul>
-
-        <div class="gallery">
-
-            Robotics Gallery
+            <h2>
+                MIG Welding Torch Simulator
+            </h2>
 
         </div>
 
-    </div>
 
-</div>
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
+
+                <p>
+
+                    A simulation project exploring
+                    motion control and welding torch
+                    movement using Arduino and
+                    Processing.
+
+                </p>
+
+            </div>
 
 
+            <div class="detail-block">
+
+                <span>Technology</span>
+
+                <ul>
+
+                    <li>
+                        Arduino
+                    </li>
+
+                    <li>
+                        Processing
+                    </li>
+
+                    <li>
+                        Stepper Motor
+                    </li>
+
+                </ul>
+
+            </div>
 
 
+            <div class="detail-block">
 
-<section id="contact">
+                <span>Focus</span>
 
-    <div class="section-header">
+                <p>
 
-        <span>05</span>
+                    Motion simulation,
+                    control logic and
+                    interactive visualization.
 
-        <h2>
+                </p>
 
-            Let's Build Something Together
-
-        </h2>
-
-    </div>
-
-    <div class="contact-content">
-
-        <p>
-
-            I'm always interested in engineering projects,
-            internships, collaborations and innovative ideas.
-
-        </p>
-
-        <div class="contact-links">
-
-            <a href="mailto:yourmail@gmail.com">
-
-                Email
-
-            </a>
-
-            <a href="https://github.com/YOURUSERNAME" target="_blank">
-
-                GitHub
-
-            </a>
-
-            <a href="https://linkedin.com/in/YOURPROFILE" target="_blank">
-
-                LinkedIn
-
-            </a>
-
-            <a href="resume.pdf">
-
-                Resume
-
-            </a>
+            </div>
 
         </div>
 
-    </div>
+    </aside>
 
-</section>
 
-</main>
 
-<footer>
+    <!-- ==========================================
+         IEEE IAS
+    =========================================== -->
 
-    <p>
+    <aside
+        class="detail-panel"
+        id="modal-ias"
+        aria-hidden="true">
 
-        © 2026 Gayathri J. Pisharady
+        <button
+            class="detail-close"
+            aria-label="Close">
 
-    </p>
+            ×
 
-</footer>
+        </button>
 
-<script src="script.js"></script>
+        <div class="detail-header">
+
+            <p>
+                CLUBS & LEADERSHIP · 2026
+            </p>
+
+            <h2>
+                IEEE IAS
+            </h2>
+
+            <h3>
+                Chair
+            </h3>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
+
+                <p>
+
+                    Leading the IEEE Industry
+                    Applications Society Student
+                    Branch Chapter at GEC Palakkad.
+
+                </p>
+
+            </div>
+
+
+            <div class="detail-block">
+
+                <span>Responsibilities</span>
+
+                <ul>
+
+                    <li>
+                        Executive Committee Leadership
+                    </li>
+
+                    <li>
+                        Technical Event Planning
+                    </li>
+
+                    <li>
+                        Workshop Coordination
+                    </li>
+
+                    <li>
+                        Volunteer Coordination
+                    </li>
+
+                    <li>
+                        Student Engagement
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="detail-block">
+
+                <span>Focus</span>
+
+                <p>
+
+                    Building technical communities,
+                    organizing activities and creating
+                    opportunities for students.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         IEDC
+    =========================================== -->
+
+    <aside
+        class="detail-panel"
+        id="modal-iedc"
+        aria-hidden="true">
+
+        <button
+            class="detail-close"
+            aria-label="Close">
+
+            ×
+
+        </button>
+
+        <div class="detail-header">
+
+            <p>
+                CLUBS & LEADERSHIP · 2026
+            </p>
+
+            <h2>
+                IEDC
+            </h2>
+
+            <h3>
+                Co-Lead
+            </h3>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
+
+                <p>
+
+                    Supporting innovation and
+                    entrepreneurship initiatives
+                    within the student community.
+
+                </p>
+
+            </div>
+
+
+            <div class="detail-block">
+
+                <span>Responsibilities</span>
+
+                <ul>
+
+                    <li>
+                        Innovation Programs
+                    </li>
+
+                    <li>
+                        Entrepreneurship Activities
+                    </li>
+
+                    <li>
+                        Event Coordination
+                    </li>
+
+                    <li>
+                        Team Collaboration
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         ARMS
+    =========================================== -->
+
+    <aside
+        class="detail-panel"
+        id="modal-arms"
+        aria-hidden="true">
+
+        <button
+            class="detail-close"
+            aria-label="Close">
+
+            ×
+
+        </button>
+
+        <div class="detail-header">
+
+            <p>
+                CLUBS & LEADERSHIP · 2026
+            </p>
+
+            <h2>
+                ARMS
+            </h2>
+
+            <h3>
+                Design Lead · Mechanical Engineering Association
+            </h3>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
+
+                <p>
+
+                    Leading design-related activities
+                    and visual communication for the
+                    Mechanical Engineering Association.
+
+                </p>
+
+            </div>
+
+
+            <div class="detail-block">
+
+                <span>Responsibilities</span>
+
+                <ul>
+
+                    <li>
+                        Design Direction
+                    </li>
+
+                    <li>
+                        Visual Communication
+                    </li>
+
+                    <li>
+                        Event Branding
+                    </li>
+
+                    <li>
+                        Creative Coordination
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         SAE
+    =========================================== -->
+
+    <aside
+        class="detail-panel"
+        id="modal-sae"
+        aria-hidden="true">
+
+        <button
+            class="detail-close"
+            aria-label="Close">
+
+            ×
+
+        </button>
+
+        <div class="detail-header">
+
+            <p>
+                CLUBS & LEADERSHIP · 2025
+            </p>
+
+            <h2>
+                SAE Collegiate Club
+            </h2>
+
+            <h3>
+                Publicity Chair
+            </h3>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
+
+                <p>
+
+                    Worked on publicity,
+                    event promotion and
+                    visual communication.
+
+                </p>
+
+            </div>
+
+
+            <div class="detail-block">
+
+                <span>Responsibilities</span>
+
+                <ul>
+
+                    <li>
+                        Poster Design
+                    </li>
+
+                    <li>
+                        Event Promotion
+                    </li>
+
+                    <li>
+                        Social Media
+                    </li>
+
+                    <li>
+                        Creative Content
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         ROBOTICS CLUB
+    =========================================== -->
+
+    <aside
+        class="detail-panel"
+        id="modal-robotics"
+        aria-hidden="true">
+
+        <button
+            class="detail-close"
+            aria-label="Close">
+
+            ×
+
+        </button>
+
+        <div class="detail-header">
+
+            <p>
+                CLUBS & LEADERSHIP · 2025
+            </p>
+
+            <h2>
+                Robotics Club
+            </h2>
+
+            <h3>
+                Executive Committee
+            </h3>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <div class="detail-block">
+
+                <span>Overview</span>
+
+                <p>
+
+                    Contributed to the Robotics Club
+                    executive committee and supported
+                    technical activities and student
+                    engagement.
+
+                </p>
+
+            </div>
+
+
+            <div class="detail-block">
+
+                <span>Responsibilities</span>
+
+                <ul>
+
+                    <li>
+                        Event Planning
+                    </li>
+
+                    <li>
+                        Team Coordination
+                    </li>
+
+                    <li>
+                        Technical Activities
+                    </li>
+
+                    <li>
+                        Student Engagement
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ==========================================
+         FOOTER
+    =========================================== -->
+
+    <footer>
+
+        <div class="footer-top">
+
+            <span>
+                Gayathri J. Pisharady
+            </span>
+
+            <span>
+                Mechanical Engineering
+            </span>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026
+            </span>
+
+            <span>
+                Built with curiosity.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
 
 </body>
 
